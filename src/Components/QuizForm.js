@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
+import '../App.css';
 
 const QuizForm = ({ onQuizSubmit}) => {
   const [question, setQuestion] = useState('');
@@ -41,7 +42,7 @@ const QuizForm = ({ onQuizSubmit}) => {
 
     };
     return (
-      <div>
+      <div className="App">
         <h2>Ajoute ton Quiz</h2>
         <form onSubmit={handleSubmit}>
           <label>

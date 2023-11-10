@@ -1,7 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import '../App.css';
 
 const QuizComponent = ({ quizList, handleAnswerClick }) => (
   <div>
+    <Link to="/quiz-page">Passer au quiz suivant</Link>
+    <br />
+    <Link to="/quiz-form">Rajouter des questions</Link>
+    <div className="App">
       <h1>Liste des Questions</h1>
       <ul>
         {quizList.map(quiz => (
@@ -18,6 +24,7 @@ const QuizComponent = ({ quizList, handleAnswerClick }) => (
         ))}
       </ul>
     </div>
+  </div>
 );
 
 export default QuizComponent;

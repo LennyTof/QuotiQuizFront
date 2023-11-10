@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import './Components/QuizComponent'
 import QuizComponent from "./Components/QuizComponent";
 import QuizForm from "./Components/QuizForm";
+import QuizPage from "./Components/QuizPage";
 
 function App() {
 
@@ -32,9 +34,12 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <QuizComponent quizList={quizList} handleAnswerClick={handleAnswerClick} />
-      <QuizForm onQuizSubmit={handleQuizSubmit} />
+    <div>
+      <Routes>
+        <Route path="/" element={<QuizComponent quizList={quizList} handleAnswerClick={handleAnswerClick} />} />
+        <Route path="/quiz-form" element={<QuizForm onQuizSubmit={handleQuizSubmit} />} />
+        <Route path="/quiz-page" element={<QuizPage />} />
+      </Routes>
     </div>
 
   );
