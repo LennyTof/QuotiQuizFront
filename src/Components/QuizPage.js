@@ -1,19 +1,37 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 import '../App.css';
+
 
 const QuizPage = () => {
   const [quiz, setQuiz] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [isCorrect, setIsCorrect] = useState(null);
+  const [askedQuestions, setAskedQuestions] = useState([]);
+  const [rightAnswer, setRightAnswer] = useState(0);
+  const navigate = useNavigate();
 
   const fetchRandomQuiz = async () => {
+    const isFifthQuestion = askedQuestions.length > 4;
     try {
+
+
       const response = await axios.get('http://localhost:3000/api/quiz/random');
+
+      if(askedQuestions.includes(response.data._id)) {
+        fetchRandomQuiz();
+        return;
+      }
+      setAskedQuestions([...askedQuestions, response.data._id]);
       setQuiz(response.data);
     } catch (error) {
       console.error("Impossible de récupérer un quiz :", error);
     }
+
+    if (isFifthQuestion) {
+      navigate('/result', { state: rightAnswer });
+    };
   };
 
   useEffect(() => {
@@ -25,7 +43,8 @@ const QuizPage = () => {
 
     const isAnswerCorrect = selectedAnswer === quiz.correctAnswer;
     setIsCorrect(isAnswerCorrect);
-    if (isCorrect) {
+    if (isAnswerCorrect) {
+      setRightAnswer(prev => prev +1);
       alert("Bonne réponse !");
     } else {
       alert("Mauvaise réponse :( ")
@@ -38,8 +57,9 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="App">
-      <h1>{quiz.question}</h1>
+    <div>
+      <h1>Prêt pour les quizs du jour ?</h1>
+      <h2>{quiz.question}</h2>
       <ul>
         {quiz.options.map((answer, index) => (
           <li key={index}>
@@ -50,6 +70,7 @@ const QuizPage = () => {
       <div>
         <button onClick={handleAnswerClick}>Valider</button>
       </div>
+      <p>Tu as correctement répondu {rightAnswer} fois</p>
     </div>
   )
 }

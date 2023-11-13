@@ -4,7 +4,7 @@ import '../App.css';
 
 const QuizComponent = ({ quizList, handleAnswerClick }) => (
   <div>
-    <Link to="/quiz-page">Passer au quiz suivant</Link>
+    <Link to="/quiz-page">Passer au test</Link>
     <br />
     <Link to="/quiz-form">Rajouter des questions</Link>
     <div className="App">

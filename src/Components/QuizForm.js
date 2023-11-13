@@ -42,7 +42,7 @@ const QuizForm = ({ onQuizSubmit}) => {
 
     };
     return (
-      <div className="App">
+      <div>
         <h2>Ajoute ton Quiz</h2>
         <form onSubmit={handleSubmit}>
           <label>

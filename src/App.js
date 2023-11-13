@@ -6,6 +6,7 @@ import './Components/QuizComponent'
 import QuizComponent from "./Components/QuizComponent";
 import QuizForm from "./Components/QuizForm";
 import QuizPage from "./Components/QuizPage";
+import ResultPage from "./Components/ResultPage";
 
 function App() {
 
@@ -34,11 +35,12 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="App">
       <Routes>
         <Route path="/" element={<QuizComponent quizList={quizList} handleAnswerClick={handleAnswerClick} />} />
         <Route path="/quiz-form" element={<QuizForm onQuizSubmit={handleQuizSubmit} />} />
         <Route path="/quiz-page" element={<QuizPage />} />
+        <Route path="/result" element={<ResultPage />} />
       </Routes>
     </div>
 
