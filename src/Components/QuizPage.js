@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import '../App.css';
+import '../style/quiz.css';
 
 
 const QuizPage = () => {
@@ -57,18 +58,21 @@ const QuizPage = () => {
   }
 
   return (
-    <div>
+    <div className="quiz-page">
       <h1>Prêt pour les quizs du jour ?</h1>
-      <h2>{quiz.question}</h2>
-      <ul>
-        {quiz.options.map((answer, index) => (
-          <li key={index}>
-            <button onClick={() => setSelectedAnswer(answer)}>{answer}</button>
-          </li>
-        ))}
-      </ul>
+      <div className="quiz">
+        <h2>{quiz.question}</h2>
+        <ul className="answer">
+          {quiz.options.map((answer, index) => (
+            <li key={index}>
+              <button onClick={() => setSelectedAnswer(answer)} className={selectedAnswer === answer ? "btn btn-warning" : "btn btn-success"}>{answer}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div>
-        <button onClick={handleAnswerClick}>Valider</button>
+        <button onClick={handleAnswerClick} className="btn btn-info">Valider</button>
       </div>
       <p>Tu as correctement répondu {rightAnswer} fois</p>
     </div>
