@@ -18,3 +18,22 @@
 .answer li {
   margin: 5px;
 }
+
+.rectangles {
+  display: flex;
+}
+
+.rectangles div {
+  background-color: lightgrey;
+  width: 20%;
+  height: 15px;
+  border: 1px solid black;
+}
+
+.rectangles .correct {
+  background-color: green;
+}
+
+.rectangles .false {
+  background-color: red;
+}

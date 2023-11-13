@@ -4,11 +4,12 @@ import '../App.css';
 
 const QuizComponent = ({ quizList, handleAnswerClick }) => (
   <div>
-    <Link to="/quiz-page">Passer au test</Link>
+    <h1>Cette page ne sera pas affichée pour les utilisateurs</h1>
+    <Link to="/quiz-page" className='btn btn-success mb-1'>Passer au test</Link>
     <br />
-    <Link to="/quiz-form">Rajouter des questions</Link>
+    <Link to="/quiz-form" className='btn btn-success'>Rajouter des questions</Link>
     <div className="App">
-      <h1>Liste des Questions</h1>
+      <h2>Liste des Questions</h2>
       <ul>
         {quizList.map(quiz => (
           <li key={quiz._id}>

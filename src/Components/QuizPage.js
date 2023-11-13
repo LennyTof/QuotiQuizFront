@@ -10,6 +10,7 @@ const QuizPage = () => {
   const [isCorrect, setIsCorrect] = useState(null);
   const [askedQuestions, setAskedQuestions] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(0);
+  const [answeredQuestions, setAnswerQuestions] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,14 +19,12 @@ const QuizPage = () => {
 
   const fetchRandomQuiz = async () => {
     try {
-
       const response = await axios.get('http://localhost:3000/api/quiz/random');
 
       if(askedQuestions.includes(response.data._id)) {
         fetchRandomQuiz();
         return;
       }
-
       setAskedQuestions([...askedQuestions, response.data._id]);
       setQuiz(response.data);
     } catch (error) {
@@ -37,6 +36,8 @@ const QuizPage = () => {
     const isAnswerCorrect = selectedAnswer === quiz.correctAnswer;
     setIsCorrect(isAnswerCorrect);
 
+    correct(isCorrect);
+
     if (isAnswerCorrect) {
       setRightAnswer(prev => prev +1);
       alert("Bonne réponse !");
@@ -44,11 +45,24 @@ const QuizPage = () => {
       alert("Mauvaise réponse :( ")
     };
 
+    setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
+
     if (askedQuestions.length === 5) {
-      navigate('/result', { state: rightAnswer + (isAnswerCorrect ? 1 : 0) });
+      setTimeout(() => {
+        navigate('/result', { state: rightAnswer + (isAnswerCorrect ? 1 : 0) });
+      }, 500);
     } else {
       fetchRandomQuiz();
     }
+
+  };
+
+  const correct = () => {
+    if (isCorrect) {
+      return "correct";
+    } else {
+      return "false";
+    };
   };
 
   if (!quiz) {
@@ -72,6 +86,11 @@ const QuizPage = () => {
         <button onClick={handleAnswerClick} className="btn btn-info">Valider</button>
       </div>
       <p>Tu as correctement répondu {rightAnswer} fois</p>
+      <div className="rectangles container">
+        {askedQuestions.map((question, index) => (
+          <div key={index} className={`${index < answeredQuestions.length ? answeredQuestions[index] : ""}`}></div>
+        ))}
+      </div>
     </div>
   )
 }
