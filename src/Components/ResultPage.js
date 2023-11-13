@@ -1,9 +1,7 @@
 import React from "react";
-import QuizPage from "./QuizPage";
 import { useLocation } from "react-router-dom";
 
 const ResultPage = () => {
-
   const location = useLocation();
 
   let numberOfCorrectAnswer = location.state ?? 0;
@@ -13,9 +11,10 @@ const ResultPage = () => {
   return (
     <div>
       <h1>C'est terminé pour aujourd'hui !</h1>
-      <p>
+      <h2>
         Tu as correctement répondu à {numberOfCorrectAnswer} {questionPlural} sur 5 !
-      </p>
+      </h2>
+      <h4>Rendez-vous demain pour un autre quiz !</h4>
     </div>
   );
 };
