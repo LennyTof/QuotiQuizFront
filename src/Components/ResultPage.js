@@ -6,23 +6,15 @@ const ResultPage = () => {
 
   const location = useLocation();
 
-  let numberOfCorrectAnswer = location.state;
-  if (numberOfCorrectAnswer == null) {
-    numberOfCorrectAnswer = 0;
-  };
+  let numberOfCorrectAnswer = location.state ?? 0;
 
-  let question = "";
-  if (numberOfCorrectAnswer >= 2) {
-    question = "questions";
-  } else {
-    question = "question";
-  };
+  const questionPlural = numberOfCorrectAnswer >= 2 ? "questions" : "question";
 
   return (
     <div>
       <h1>C'est terminé pour aujourd'hui !</h1>
       <p>
-        Tu as correctement répondu à {numberOfCorrectAnswer} {question} sur 5 !
+        Tu as correctement répondu à {numberOfCorrectAnswer} {questionPlural} sur 5 !
       </p>
     </div>
   );
