@@ -7,6 +7,8 @@ import QuizComponent from "./Components/QuizComponent";
 import QuizForm from "./Components/QuizForm";
 import QuizPage from "./Components/QuizPage";
 import ResultPage from "./Components/ResultPage";
+import LoginForm from "./Components/LoginForm";
+import SignUpForm from "./Components/SignUpForm";
 
 function App() {
 
@@ -41,6 +43,7 @@ function App() {
         <Route path="/quiz-form" element={<QuizForm onQuizSubmit={handleQuizSubmit} />} />
         <Route path="/quiz-page" element={<QuizPage />} />
         <Route path="/result" element={<ResultPage />} />
+        <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
       </Routes>
     </div>
 
