@@ -3,13 +3,15 @@ import axios from 'axios';
 
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/signup', {
+      const response = await axios.post('http://localhost:3000/api/user/signup', {
         email,
+        username,
         password,
       });
       console.log(response.data);
@@ -27,6 +29,12 @@ const SignUpForm = () => {
           placeholder='Entrez votre email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='Choisissez un pseudonyme'
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type='password'

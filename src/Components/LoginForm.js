@@ -10,11 +10,13 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
+      const response = await axios.post('http://localhost:3000/api/user/login', {
         email,
         password,
       });
-      navigate('/');
+      //navigate('/');
+      localStorage.setItem('token', response.data.token);
+      console.log(localStorage);
     } catch (error) {
       console.error('Erreur:', error);
     }
@@ -22,7 +24,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <h3>Vous possédez déjà un compte</h3>
+      <h3>Vous possédez déjà un compte ?</h3>
       <form onSubmit={handleLogin}>
         <input
           type='email'
@@ -32,7 +34,7 @@ const LoginForm = () => {
         />
         <input
           type='password'
-          placeholder='Entre votre mot de passe'
+          placeholder='Entrez votre mot de passe'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

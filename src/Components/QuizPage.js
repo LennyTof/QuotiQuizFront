@@ -11,10 +11,13 @@ const QuizPage = () => {
   const [askedQuestions, setAskedQuestions] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchRandomQuiz();
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
   }, []);
 
   const fetchRandomQuiz = async () => {
@@ -36,8 +39,6 @@ const QuizPage = () => {
     const isAnswerCorrect = selectedAnswer === quiz.correctAnswer;
     setIsCorrect(isAnswerCorrect);
 
-    correct(isCorrect);
-
     if (isAnswerCorrect) {
       setRightAnswer(prev => prev +1);
       alert("Bonne réponse !");
@@ -54,15 +55,6 @@ const QuizPage = () => {
     } else {
       fetchRandomQuiz();
     }
-
-  };
-
-  const correct = () => {
-    if (isCorrect) {
-      return "correct";
-    } else {
-      return "false";
-    };
   };
 
   if (!quiz) {
@@ -71,6 +63,8 @@ const QuizPage = () => {
 
   return (
     <div className="quiz-page">
+      {!isLoggedIn && <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
+      {isLoggedIn && <Link to="/profil" className='btn btn-success mb-1'>Profil</Link>}
       <h1>Prêt pour les questions du jour ?</h1>
       <div className="quiz">
         <h2>{quiz.question}</h2>
