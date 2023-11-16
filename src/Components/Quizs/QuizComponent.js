@@ -33,12 +33,12 @@ const QuizComponent = () => {
       <Link to="/quiz-form" className='btn btn-success'>Rajouter des questions</Link>
       <div className="App">
         <h2>Liste des Questions</h2>
-        <ul>
+        <ul style={{listStyleType: "none"}}>
           {quizList.map(quiz => (
             <li key={quiz._id}>
               <div>
                 <h3>{quiz.question}</h3>
-                <ul>
+                <ul style={{listStyleType: "none"}}>
                   {quiz.options.map((answer, index) => (
                     <li key={index} onClick={() => handleAnswerClick(answer, quiz.correctAnswer)}>{answer}</li>
                   ))}

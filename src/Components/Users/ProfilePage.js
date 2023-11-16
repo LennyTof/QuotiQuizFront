@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import IsConnect from './UserLoggedIn';
+import LogoutButton from '../Buttons/LogoutButton';
+import '../../style/profile.css';
+
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
+  const isLoggedIn = IsConnect();
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/user/profil', {
@@ -28,7 +33,7 @@ const ProfilePage = () => {
         <div>
           <h3>Salut {userProfile.username} !</h3>
           <h2>Scores :</h2>
-            <ul>
+            <ul className='score-list'>
               {userProfile.scores.map((score, index) => (
                 <li key={index}>Tu as obtenu {score.value} points sur 5 le {score.date}</li>
               ))}
@@ -38,6 +43,7 @@ const ProfilePage = () => {
         <p>Chargement du profil...</p>
       )}
       <Link to="/quiz-page" className='btn btn-success mb-1'>Lancer une session Quiz</Link>
+      {isLoggedIn && <LogoutButton /> }
     </div>
   );
 };

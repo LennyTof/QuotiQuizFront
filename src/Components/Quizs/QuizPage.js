@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import LogoutButton from '../Buttons/LogoutButton';
+import IsConnect from '../Users/UserLoggedIn';
 import '../../style/quiz.css';
 
 const QuizPage = () => {
@@ -11,13 +12,11 @@ const QuizPage = () => {
   const [askedQuestions, setAskedQuestions] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = IsConnect()
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchRandomQuiz();
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
   }, []);
 
   const fetchRandomQuiz = async () => {
