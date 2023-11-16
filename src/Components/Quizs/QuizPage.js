@@ -49,20 +49,22 @@ const QuizPage = () => {
     setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
 
     if (askedQuestions.length === 5) {
-      handleQuizCompletion();
+      const totalScore = rightAnswer + (isAnswerCorrect ? 1 : 0);
+
       setTimeout(() => {
-        navigate('/result', { state: rightAnswer + (isAnswerCorrect ? 1 : 0) });
+        handleQuizCompletion(totalScore);
+        navigate('/result', { state: totalScore });
       }, 500);
     } else {
       fetchRandomQuiz();
     }
   };
 
-  const handleQuizCompletion = async () => {
+  const handleQuizCompletion = async (totalScore) => {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post('http://localhost:3000/api/user/score',
-      { score: rightAnswer },
+      { score: totalScore },
       {
         headers: {
           'Authorization': `Bearer ${token}`,
