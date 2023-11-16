@@ -12,6 +12,7 @@ const QuizPage = () => {
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userScore, setUserScore] = useState(0)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const QuizPage = () => {
 
     if (isAnswerCorrect) {
       setRightAnswer(prev => prev +1);
+      setUserScore(prev => prev + 1)
       alert("Bonne réponse !");
     } else {
       alert("Mauvaise réponse :( ")
@@ -49,12 +51,29 @@ const QuizPage = () => {
     setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
 
     if (askedQuestions.length === 5) {
+      handleQuizCompletion();
       setTimeout(() => {
         navigate('/result', { state: rightAnswer + (isAnswerCorrect ? 1 : 0) });
       }, 500);
     } else {
       fetchRandomQuiz();
     }
+  };
+
+  const handleQuizCompletion = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.post('http://localhost:3000/api/user/score',
+      { score: userScore },
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+    } catch (error) {
+      console.error("Erreur lors de l'enregistrement du score:", error)
+;    };
   };
 
   if (!quiz) {

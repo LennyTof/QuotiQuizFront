@@ -14,6 +14,7 @@ const ProfilePage = () => {
     })
     .then(response => {
       setUserProfile(response.data);
+      console.log(response.data)
     })
     .catch(error => {
       console.error('Impossible de récupérer les données du profil :', error);
@@ -26,6 +27,12 @@ const ProfilePage = () => {
       {userProfile ? (
         <div>
           <h3>Salut {userProfile.username} !</h3>
+          <h2>Scores :</h2>
+            <ul>
+              {userProfile.scores.map((score, index) => (
+                <li key={index}>{score.value} points - {score.date}</li>
+              ))}
+            </ul>
         </div>
       ) : (
         <p>Chargement du profil...</p>
