@@ -1,14 +1,20 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import moment from 'moment-timezone';
 import { Link } from 'react-router-dom';
 import IsConnect from './UserLoggedIn';
 import LogoutButton from '../Buttons/LogoutButton';
+
 import '../../style/profile.css';
 
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const isLoggedIn = IsConnect();
+
+  const formatDate = (dateString) => {
+    return moment(dateString).tz('Europe/Paris').format('DD/MM/YYYY');
+  };
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/user/profil', {
@@ -19,7 +25,6 @@ const ProfilePage = () => {
     })
     .then(response => {
       setUserProfile(response.data);
-      console.log(response.data)
     })
     .catch(error => {
       console.error('Impossible de récupérer les données du profil :', error);
@@ -35,7 +40,8 @@ const ProfilePage = () => {
           <h2>Scores :</h2>
             <ul className='score-list'>
               {userProfile.scores.map((score, index) => (
-                <li key={index}>Tu as obtenu {score.value} points sur 5 le {score.date}</li>
+                <li key={index}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
+
               ))}
             </ul>
         </div>
