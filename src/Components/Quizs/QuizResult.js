@@ -1,8 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import '../style/result.css';
+import '../../style/result.css';
 
-const ResultPage = () => {
+const QuizResult = () => {
   const location = useLocation();
 
   let numberOfCorrectAnswer = location.state ?? 0;
@@ -22,4 +22,4 @@ const ResultPage = () => {
   );
 };
 
-export default ResultPage;
+export default QuizResult;

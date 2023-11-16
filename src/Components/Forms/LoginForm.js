@@ -14,9 +14,8 @@ const LoginForm = () => {
         email,
         password,
       });
-      //navigate('/');
+      navigate('/profil');
       localStorage.setItem('token', response.data.token);
-      console.log(localStorage);
     } catch (error) {
       console.error('Erreur:', error);
     }

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import '../App.css';
-import '../style/quiz.css';
+import LogoutButton from '../Buttons/LogoutButton';
+import '../../style/quiz.css';
 
 const QuizPage = () => {
   const [quiz, setQuiz] = useState(null);
@@ -65,6 +65,7 @@ const QuizPage = () => {
     <div className="quiz-page">
       {!isLoggedIn && <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
       {isLoggedIn && <Link to="/profil" className='btn btn-success mb-1'>Profil</Link>}
+      {isLoggedIn && <LogoutButton />}
       <h1>Prêt pour les questions du jour ?</h1>
       <div className="quiz">
         <h2>{quiz.question}</h2>

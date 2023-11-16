@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import '../App.css';
+import '../../App.css';
 
 const QuizForm = ({ onQuizSubmit}) => {
   const [question, setQuestion] = useState('');

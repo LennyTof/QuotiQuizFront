@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -29,6 +30,7 @@ const ProfilePage = () => {
       ) : (
         <p>Chargement du profil...</p>
       )}
+      <Link to="/quiz-page" className='btn btn-success mb-1'>Lancer une session Quiz</Link>
     </div>
   );
 };
