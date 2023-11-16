@@ -12,7 +12,6 @@ const QuizPage = () => {
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userScore, setUserScore] = useState(0)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +41,6 @@ const QuizPage = () => {
 
     if (isAnswerCorrect) {
       setRightAnswer(prev => prev +1);
-      setUserScore(prev => prev + 1)
       alert("Bonne réponse !");
     } else {
       alert("Mauvaise réponse :( ")
@@ -64,7 +62,7 @@ const QuizPage = () => {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post('http://localhost:3000/api/user/score',
-      { score: userScore },
+      { score: rightAnswer },
       {
         headers: {
           'Authorization': `Bearer ${token}`,
