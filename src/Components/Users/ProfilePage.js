@@ -32,11 +32,16 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Profil</h2>
+    <div className='profil-page'>
+      <div className='profil-button'>
+        <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
+        {isLoggedIn && <LogoutButton /> }
+      </div>
+      <h1>Profil</h1>
       {userProfile ? (
         <div>
           <h3>Salut {userProfile.username} !</h3>
+          <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
           <h2>Scores :</h2>
             <ul className='score-list'>
               {userProfile.scores.map((score, index) => (
@@ -48,8 +53,6 @@ const ProfilePage = () => {
       ) : (
         <p>Chargement du profil...</p>
       )}
-      <Link to="/quiz-page" className='btn btn-success mb-1'>Lancer une session Quiz</Link>
-      {isLoggedIn && <LogoutButton /> }
     </div>
   );
 };

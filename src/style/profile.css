@@ -1,3 +1,11 @@
+.profil-page {
+  margin: 10px;
+}
+
+.profil-button {
+  text-align: left;
+}
+
 .score-list {
   list-style-type: none;
 }
