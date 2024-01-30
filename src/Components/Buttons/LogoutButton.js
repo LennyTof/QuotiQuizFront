@@ -6,7 +6,7 @@ const LogoutButton = () => {
 
   const handleClick = () => {
     localStorage.removeItem('token');
-    navigate('/quiz-page');
+    navigate('/login');
   };
 
   return (

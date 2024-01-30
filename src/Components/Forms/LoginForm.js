@@ -17,7 +17,7 @@ const LoginForm = () => {
       navigate('/profil');
       localStorage.setItem('token', response.data.token);
     } catch (error) {
-      console.error('Erreur:', error);
+      alert('Email ou mot de passe incorrect');
     }
   };
 
