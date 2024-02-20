@@ -14,7 +14,10 @@ const SignUpForm = () => {
         username,
         password,
       });
-      console.log(response.data);
+      alert("Ton compte a correctement été créé");
+      setEmail('');
+      setUsername('');
+      setPassword('');
     } catch (error) {
       console.error('Erreur:', error);
     }
