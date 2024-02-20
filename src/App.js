@@ -9,6 +9,7 @@ import QuizResult from "./Components/Quizs/QuizResult";
 import LoginForm from "./Components/Forms/LoginForm";
 import SignUpForm from "./Components/Forms/SignUpForm";
 import ProfilePage from "./Components/Users/ProfilePage";
+import ProfileInfo from "./Components/Users/ProfileInfo";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/quiz-page" element={<QuizPage />} />
         <Route path="/result" element={<QuizResult />} />
         <Route path="/profil" element={<ProfilePage />} />
+        <Route path="/profil-info" element={<ProfileInfo />} />
         <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
       </Routes>
     </div>

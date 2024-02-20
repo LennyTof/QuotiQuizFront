@@ -35,6 +35,7 @@ const ProfilePage = () => {
     <div className='profil-page'>
       <div className='profil-button'>
         <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
+        <Link to="/profil-info" className='btn btn-success mb-1 me-1'>Voir/Modifier les informations</Link>
         {isLoggedIn && <LogoutButton /> }
       </div>
       <h1>Profil</h1>
