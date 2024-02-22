@@ -32,27 +32,35 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div className='profil-page'>
-      <div className='profil-button'>
-        <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
-        <Link to="/profil-info" className='btn btn-success mb-1 me-1'>Voir/Modifier les informations</Link>
-        {isLoggedIn && <LogoutButton /> }
-      </div>
-      <h1>Profil</h1>
-      {userProfile ? (
-        <div>
-          <h3>Salut {userProfile.username} !</h3>
-          <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
-          <h2>Scores :</h2>
-            <ul className='score-list'>
-              {userProfile.scores.map((score, index) => (
-                <li key={index}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
-
-              ))}
-            </ul>
+    <div>
+      {isLoggedIn ? (
+        <div className='profil-page'>
+        <div className='profil-button'>
+          <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
+          <Link to="/profil-info" className='btn btn-success mb-1 me-1'>Voir/Modifier les informations</Link>
+          {isLoggedIn && <LogoutButton /> }
         </div>
-      ) : (
-        <p>Chargement du profil...</p>
+        <h1>Profil</h1>
+        {userProfile ? (
+          <div>
+            <h3>Salut {userProfile.username} !</h3>
+            <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
+            <h2>Scores :</h2>
+              <ul className='score-list'>
+                {userProfile.scores.map((score, index) => (
+                  <li key={index}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
+
+                ))}
+              </ul>
+          </div>
+        ) : (
+          <p>Chargement du profil...</p>
+        )}
+      </div>) : (
+        <div>
+          <h2>Veuillez vous connecter pour accéder à cette page</h2>
+          <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>
+        </div>
       )}
     </div>
   );
