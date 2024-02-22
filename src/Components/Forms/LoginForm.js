@@ -25,12 +25,14 @@ const LoginForm = () => {
     <div>
       <h3>Vous possédez déjà un compte ?</h3>
       <form onSubmit={handleLogin}>
+      <label htmlFor="email">Email :</label>
         <input
           type='email'
           placeholder='Entrez votre email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label htmlFor="Mot de passe">Mot de passe :</label>
         <input
           type='password'
           placeholder='Entrez votre mot de passe'

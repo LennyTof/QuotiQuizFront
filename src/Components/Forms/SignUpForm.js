@@ -27,18 +27,21 @@ const SignUpForm = () => {
     <div>
       <h3>Créer un compte</h3>
       <form onSubmit={handleSignUp}>
+      <label htmlFor="email">Email :</label>
         <input
           type='email'
           placeholder='Entrez votre email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label htmlFor="Pseudo">Pseudo :</label>
         <input
           type='text'
-          placeholder='Choisissez un pseudonyme'
+          placeholder='Choisissez un pseudo'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <label htmlFor="Mot de passe">Mot de passe :</label>
         <input
           type='password'
           placeholder='Entrez votre mot de passe'
