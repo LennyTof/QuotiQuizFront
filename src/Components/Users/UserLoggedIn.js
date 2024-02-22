@@ -6,7 +6,7 @@ const IsConnect = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
-  }, [])
+  })
   return isLoggedIn
 };
 
