@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 
-const InfoForm = ({ emailState, usernameState, userId}) => {
+const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
   const [email, setEmail] = useState(emailState);
   const [username, setUsername] = useState(usernameState);
   const [oldPassword, setOldPassword] = useState('')
@@ -58,6 +58,7 @@ const InfoForm = ({ emailState, usernameState, userId}) => {
         />
         <button type='submit'>Modifier</button>
       </form>
+      <button onClick={onClose} className='btn btn-success'>Fermer</button>
     </div>
   );
 };
