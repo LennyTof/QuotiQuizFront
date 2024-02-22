@@ -5,6 +5,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -13,13 +14,16 @@ const SignUpForm = () => {
         email,
         username,
         password,
+        passwordConfirmation
       });
       alert("Ton compte a correctement été créé");
       setEmail('');
       setUsername('');
       setPassword('');
+      setPasswordConfirmation('');
     } catch (error) {
       console.error('Erreur:', error);
+      alert("Les mot de passe sont différents")
     }
   };
 
@@ -47,6 +51,13 @@ const SignUpForm = () => {
           placeholder='Entrez votre mot de passe'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <label htmlFor="Confirmation mot de passe">Confirmez le mot de passe :</label>
+        <input
+          type='password'
+          placeholder='Confirmation du mot de passe'
+          value={passwordConfirmation}
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
         <button type='submit'>S'inscrire</button>
       </form>
