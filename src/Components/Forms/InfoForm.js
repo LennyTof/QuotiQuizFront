@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import axios from 'axios';
+import '../../style/infoForm.css';
 
 const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
   const [email, setEmail] = useState(emailState);
@@ -25,7 +26,7 @@ const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
     }
   }
   return (
-    <div>
+    <div className='infoForm'>
       <h3>Modifier les informations</h3>
       <form onSubmit={handleSignUp}>
         <label htmlFor="email">Email :</label>
@@ -49,7 +50,7 @@ const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
         />
-        <label htmlFor="password">Mot de passe :</label>
+        <label htmlFor="password">Nouveau mot de passe :</label>
         <input
           type='password'
           placeholder='Nouveau mot de passe'

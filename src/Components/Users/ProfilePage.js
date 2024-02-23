@@ -37,24 +37,30 @@ const ProfilePage = () => {
     <div>
       {isLoggedIn ? (
         <div className='profil-page'>
-        <div className='profil-button'>
-          <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
-          <button className='btn btn-success mb-1 me-1' onClick={() => setShowModal(true)}>Voir/Modifier les informations</button>
-          {isLoggedIn && <LogoutButton /> }
-        </div>
+          <div className='profil-button'>
+            <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
+            <button className='btn btn-success mb-1 me-1' onClick={() => setShowModal(true)}>Voir/Modifier les informations</button>
+            {isLoggedIn && <LogoutButton /> }
+          </div>
         <h1>Profil</h1>
-        {showModal && <InfoForm emailState="email@example.com" usernameState="username" onClose={() => setShowModal(false)} />}
+        {showModal && <InfoForm emailState={userProfile.email} usernameState={userProfile.username} userId={userProfile._id} onClose={() => setShowModal(false)} />}
         {userProfile ? (
           <div>
-            <h3>Salut {userProfile.username} !</h3>
-            <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
-            <h2>Scores :</h2>
-              <ul className='score-list'>
-                {userProfile.scores.map((score, index) => (
-                  <li key={index}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
+            {showModal ? (
+            <div></div>
+          ) : (
+            <div>
+              <h3>Salut {userProfile.username} !</h3>
+              <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
+              <h2>Scores :</h2>
+                <ul className='score-list'>
+                  {userProfile.scores.map((score, index) => (
+                    <li key={index}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
 
-                ))}
-              </ul>
+                  ))}
+                </ul>
+            </div>
+          )}
           </div>
         ) : (
           <p>Chargement du profil...</p>
