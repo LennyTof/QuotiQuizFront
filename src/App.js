@@ -10,6 +10,7 @@ import LoginForm from "./Components/Forms/LoginForm";
 import SignUpForm from "./Components/Forms/SignUpForm";
 import ProfilePage from "./Components/Users/ProfilePage";
 import ProfileInfo from "./Components/Users/ProfileInfo";
+import Leaderboard from "./Components/Scores/Leaderboard";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/profil-info" element={<ProfileInfo />} />
         <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </div>
 
