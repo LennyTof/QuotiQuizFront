@@ -82,12 +82,9 @@ const QuizPage = () => {
   return (
     <div className="quiz-page">
       <div className="profil-button">
-        {!isLoggedIn && <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
-        {isLoggedIn && <Link to="/profil" className='btn btn-success mb-1 me-1'>Profil</Link>}
-        {isLoggedIn && <LogoutButton />}
       </div>
       <div className="quiz">
-        <h1>Prêt pour les questions du jour ?</h1>
+        <h1>Question {askedQuestions.length}</h1>
         <h2>{quiz.question}</h2>
         <ul className="answer">
           {quiz.options.map((answer, index) => (

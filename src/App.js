@@ -11,22 +11,26 @@ import SignUpForm from "./Components/Forms/SignUpForm";
 import ProfilePage from "./Components/Users/ProfilePage";
 import ProfileInfo from "./Components/Users/ProfileInfo";
 import Leaderboard from "./Components/Scores/Leaderboard";
+import Banner from "./Components/Banner";
 
 function App() {
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<QuizComponent/>} />
-        <Route path="/quiz-form" element={<QuizForm/>} />
-        <Route path="/quiz-page" element={<QuizPage />} />
-        <Route path="/result" element={<QuizResult />} />
-        <Route path="/profil" element={<ProfilePage />} />
-        <Route path="/profil-info" element={<ProfileInfo />} />
-        <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-      </Routes>
-    </div>
+    <>
+      <Banner />
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<QuizComponent/>} />
+          <Route path="/quiz-form" element={<QuizForm/>} />
+          <Route path="/quiz-page" element={<QuizPage />} />
+          <Route path="/result" element={<QuizResult />} />
+          <Route path="/profil" element={<ProfilePage />} />
+          <Route path="/profil-info" element={<ProfileInfo />} />
+          <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+        </Routes>
+      </div>
+    </>
 
   );
 }

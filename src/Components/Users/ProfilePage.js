@@ -38,10 +38,7 @@ const ProfilePage = () => {
       {isLoggedIn ? (
         <div className='profil-page'>
           <div className='profil-button'>
-            <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
-            <Link to="/leaderboard" className='btn btn-success mb-1 me-1'>Score Global</Link>
             <button className='btn btn-success mb-1 me-1' onClick={() => setShowModal(true)}>Voir/Modifier les informations</button>
-            {isLoggedIn && <LogoutButton /> }
           </div>
         <h1>Profil</h1>
         {showModal && <InfoForm emailState={userProfile.email} usernameState={userProfile.username} userId={userProfile._id} onClose={() => setShowModal(false)} />}
@@ -69,7 +66,6 @@ const ProfilePage = () => {
       </div>) : (
         <div>
           <h2>Veuillez vous connecter pour accéder à cette page</h2>
-          <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>
         </div>
       )}
     </div>

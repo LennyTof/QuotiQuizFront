@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import LogoutButton from "../Buttons/LogoutButton";
 
 const IsConnect = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,3 +12,5 @@ const IsConnect = () => {
 };
 
 export default IsConnect;
+
+
