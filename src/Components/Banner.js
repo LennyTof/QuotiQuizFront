@@ -1,5 +1,4 @@
 import '../style/banner.css';
-import  useState  from 'react';
 import IsConnect from './Users/UserLoggedIn';
 import LogoutButton from './Buttons/LogoutButton';
 import { Link } from 'react-router-dom';
