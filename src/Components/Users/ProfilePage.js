@@ -39,6 +39,7 @@ const ProfilePage = () => {
         <div className='profil-page'>
           <div className='profil-button'>
             <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
+            <Link to="/leaderboard" className='btn btn-success mb-1 me-1'>Score Global</Link>
             <button className='btn btn-success mb-1 me-1' onClick={() => setShowModal(true)}>Voir/Modifier les informations</button>
             {isLoggedIn && <LogoutButton /> }
           </div>
