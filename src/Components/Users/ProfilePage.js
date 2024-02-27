@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import moment from 'moment-timezone';
-import { Link } from 'react-router-dom';
 import IsConnect from './UserLoggedIn';
-import LogoutButton from '../Buttons/LogoutButton';
 import InfoForm from '../Forms/InfoForm';
 
 import '../../style/profile.css';

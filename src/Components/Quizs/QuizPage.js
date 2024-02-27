@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import LogoutButton from '../Buttons/LogoutButton';
+import { useNavigate } from 'react-router-dom';
 import IsConnect from '../Users/UserLoggedIn';
 import '../../style/quiz.css';
 
@@ -81,8 +80,6 @@ const QuizPage = () => {
 
   return (
     <div className="quiz-page">
-      <div className="profil-button">
-      </div>
       <div className="quiz">
         <h1>Question {askedQuestions.length}</h1>
         <h2>{quiz.question}</h2>
