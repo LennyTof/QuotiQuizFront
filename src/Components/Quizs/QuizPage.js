@@ -10,6 +10,7 @@ const QuizPage = () => {
   const [askedQuestions, setAskedQuestions] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
+  const [announcement, setAnnoucement] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,11 +36,12 @@ const QuizPage = () => {
     const isAnswerCorrect = selectedAnswer === quiz.correctAnswer;
     setIsCorrect(isAnswerCorrect);
 
+
     if (isAnswerCorrect) {
       setRightAnswer(prev => prev +1);
-      alert("Bonne réponse !");
+      setAnnoucement('Bonne réponse !')
     } else {
-      alert("Mauvaise réponse :( ")
+      setAnnoucement('Mauvaise réponse :(')
     };
 
     setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
@@ -92,7 +94,8 @@ const QuizPage = () => {
           <button onClick={handleAnswerClick} className="btn btn-info">Valider</button>
         </div>
         <p>Tu as correctement répondu à {rightAnswer} question{rightAnswer > 1 && "s"}</p>
-        <div className="rectangles container">
+        <h2>{announcement}</h2>
+        <div className="rectangles container h-25 ">
           {askedQuestions.map((question, index) => (
             <div key={index} className={`${index < answeredQuestions.length ? answeredQuestions[index] : ""}`}></div>
           ))}
