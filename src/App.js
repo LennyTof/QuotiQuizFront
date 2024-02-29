@@ -12,11 +12,13 @@ import ProfilePage from "./Components/Users/ProfilePage";
 import ProfileInfo from "./Components/Users/ProfileInfo";
 import Leaderboard from "./Components/Scores/Leaderboard";
 import Banner from "./Components/Banner";
+import { LoginProvider } from './Components/Users/LoginContext';
 
 function App() {
 
   return (
     <>
+      <LoginProvider>
       <Banner />
       <div className="App">
         <Routes>
@@ -30,8 +32,8 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
+      </LoginProvider>
     </>
-
   );
 }
 

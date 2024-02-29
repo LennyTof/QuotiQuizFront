@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import moment from 'moment-timezone';
-import IsConnect from './UserLoggedIn';
+import { useLogin } from './LoginContext';
 import InfoForm from '../Forms/InfoForm';
 
 import '../../style/profile.css';
@@ -10,7 +10,7 @@ import '../../style/profile.css';
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [showModal, setShowModal] = useState(false)
-  const isLoggedIn = IsConnect();
+  const isLoggedIn = useLogin();
 
   const formatDate = (dateString) => {
     return moment(dateString).tz('Europe/Paris').format('DD/MM/YYYY');

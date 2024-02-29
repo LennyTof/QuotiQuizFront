@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import IsConnect from '../Users/UserLoggedIn';
 import '../../style/quiz.css';
 
 const QuizPage = () => {
@@ -11,7 +10,6 @@ const QuizPage = () => {
   const [askedQuestions, setAskedQuestions] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
-  const isLoggedIn = IsConnect()
   const navigate = useNavigate();
 
   useEffect(() => {

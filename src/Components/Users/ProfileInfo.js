@@ -1,14 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import IsConnect from './UserLoggedIn';
 import InfoForm from '../Forms/InfoForm';
 
 import '../../style/profile.css';
 
 const ProfileInfo = () => {
   const [userProfile, setUserProfile] = useState(null);
-  const isLoggedIn = IsConnect();
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/user/profil', {

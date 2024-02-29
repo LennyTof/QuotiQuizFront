@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from '../Users/LoginContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { updateLoginStatus } = useLogin();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -14,9 +16,10 @@ const LoginForm = () => {
         email,
         password,
       });
-      navigate('/profil');
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username )
+      updateLoginStatus(true);
+      navigate('/profil');
     } catch (error) {
       alert('Email ou mot de passe incorrect');
     }
