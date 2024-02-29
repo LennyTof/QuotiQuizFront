@@ -91,7 +91,7 @@ const QuizPage = () => {
         <div>
           <button onClick={handleAnswerClick} className="btn btn-info">Valider</button>
         </div>
-        <p>Tu as correctement répondu {rightAnswer} fois</p>
+        <p>Tu as correctement répondu à {rightAnswer} question{rightAnswer > 1 && "s"}</p>
         <div className="rectangles container">
           {askedQuestions.map((question, index) => (
             <div key={index} className={`${index < answeredQuestions.length ? answeredQuestions[index] : ""}`}></div>

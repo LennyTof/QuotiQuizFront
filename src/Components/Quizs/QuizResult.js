@@ -1,11 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { useLogin } from '../Users/LoginContext';
 
 import '../../style/result.css';
 
 const QuizResult = () => {
   const location = useLocation();
-  
+  const { isLoggedIn } = useLogin();
+
   let numberOfCorrectAnswer = location.state ?? 0;
 
   const questionPlural = numberOfCorrectAnswer >= 2 ? "questions" : "question";
@@ -18,6 +20,7 @@ const QuizResult = () => {
           Tu as correctement répondu à {numberOfCorrectAnswer} {questionPlural} sur 5 !
         </h2>
       </div>
+        <h4>{!isLoggedIn && 'Connecte toi pour enregistrer ton score !'}</h4>
     </div>
   );
 };
