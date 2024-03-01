@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
@@ -33,14 +33,22 @@ const slideImages = [
 
 const HomePage = () => {
 
+  const [number, setNumber] = useState(1);
+
+  const handleClick = () => {
+    setNumber(number + 1);
+  };
+
+  const isOdd = number % 2 !== 0;
+  const move =  isOdd? "d-none" : "";
 
   return (
     <>
-      <div className=''>
+      <div>
         <h2>Bonjour et bienvenue sur mon premier project sous React et node.js</h2>
-        <button className='btn btn-primary'>Le principe du site ?</button>
+        <button onClick={handleClick} className='btn btn-primary'>Le principe du site ?</button>
       </div>
-      <div className="slide-container">
+      <div className={`slide-containter ${move}`}>
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
@@ -53,6 +61,6 @@ const HomePage = () => {
       </div>
     </>
   )
-}
+};
 
 export default HomePage;
