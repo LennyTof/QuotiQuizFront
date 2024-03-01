@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import HomePage from "./Components/HomePage";
 import QuizComponent from "./Components/Quizs/QuizComponent";
 import QuizForm from "./Components/Forms/QuizForm";
 import QuizPage from "./Components/Quizs/QuizPage";
@@ -22,6 +23,7 @@ function App() {
       <Banner />
       <div className="App">
         <Routes>
+          <Route path="/home-page" element={<HomePage/>} />
           <Route path="/" element={<QuizComponent/>} />
           <Route path="/quiz-form" element={<QuizForm/>} />
           <Route path="/quiz-page" element={<QuizPage />} />

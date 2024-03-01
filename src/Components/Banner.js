@@ -10,7 +10,8 @@ const Banner = () => {
   return (
     <div className="banner">
       <h1 className="title">QuotiQuiz</h1>
-        <div>
+        <div className='m-l 3'>
+        {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
         {isLoggedIn && <Link to="/profil" className='btn btn-success mb-1 me-1'>Profil</Link>}
         <Link to="/leaderboard" className='btn btn-success mb-1 me-1'>Score Global</Link>
         <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>

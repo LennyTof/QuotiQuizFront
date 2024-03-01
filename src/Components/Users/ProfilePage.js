@@ -46,7 +46,6 @@ const ProfilePage = () => {
             <div></div>
           ) : (
             <div>
-              <h3>Salut {userProfile.username} !</h3>
               <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
               <h2>Scores :</h2>
                 <ul className='score-list'>
