@@ -46,7 +46,7 @@ const HomePage = () => {
     <>
       <div>
         <h2>Bonjour et bienvenue sur mon premier project sous React et node.js</h2>
-        <button onClick={handleClick} className='btn btn-primary'>Le principe du site ?</button>
+        <button onClick={handleClick} className='btn btn-primary'>{isOdd ? 'Le principe du site ?' : 'Fermer'}</button>
       </div>
       <div className={`slide-containter ${move}`}>
         <Slide>
