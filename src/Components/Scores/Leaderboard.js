@@ -34,7 +34,7 @@ const Leaderboard = () => {
       <h2>Les scores du jour {formatDate(todayDate())}</h2>
       <ul className="scoreList">
         {scores.map((score, index) => (
-          <li key={index} className={score.user.username === userUsername ? "currentUser" : ""}>{score.user.username} a obtenu : {score.value}/5 à son quiz aujourd'hui !</li>
+          <li key={index}> {score.user.username === userUsername ? `Vous avez obtenu ${score.value}/5 à votre quiz aujourd'hui !` : `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}</li>
        ))}
       </ul>
     </div>

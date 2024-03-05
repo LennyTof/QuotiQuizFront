@@ -9,8 +9,8 @@ const Banner = () => {
 
   return (
     <div className="banner">
-      <h1 className="title">QuotiQuiz</h1>
-        <div className='m-l 3 link'>
+      <Link to="/home-page" style={{ textDecoration:'none', color:'white'}}><h1 className="title">QuotiQuiz</h1></Link>
+      <div className='m-l 3 link'>
         {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
         <div>
           {isLoggedIn && <Link to="/profil" className='btn btn-success mb-1 me-1'>Profil</Link>}
@@ -18,7 +18,7 @@ const Banner = () => {
           <Link to="/quiz-page" className='btn btn-success mb-1 me-1'>Lancer une session Quiz</Link>
           {isLoggedIn ? <LogoutButton onLogout={() => updateLoginStatus(false)}/> :  <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
         </div>
-        </div>
+      </div>
     </div>
   )
 }

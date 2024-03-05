@@ -1,0 +1,16 @@
+.divStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 50vh;
+  background-repeat: no-repeat;
+  border: solid;
+  border-radius: 20px;
+}
+
+.panStyle {
+  padding: '20px';
+  background: '#56756e';
+  color: '#000000';
+}
