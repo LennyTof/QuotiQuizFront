@@ -8,8 +8,8 @@ const Banner = () => {
   const { isLoggedIn, updateLoginStatus } = useLogin();
 
   return (
-    <div className="banner">
-      <Link to="/home-page" style={{ textDecoration:'none', color:'white'}}><h1 className="title">QuotiQuiz</h1></Link>
+    <div className="banner mb-3">
+      <Link to="/" style={{ textDecoration:'none', color:'white'}}><h1 className="title">QuotiQuiz</h1></Link>
       <div className='m-l 3 link'>
         {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
         <div>

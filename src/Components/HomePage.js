@@ -44,6 +44,7 @@ const HomePage = () => {
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
               <div className='divStyle'style={{ 'backgroundImage': `url(${slideImage.url})` }}>
+                <span className='pictureNumber'>{index + 1}</span>
               </div>
               <div className='panStyle'>{slideImage.caption}</div>
             </div>

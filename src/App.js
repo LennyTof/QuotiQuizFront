@@ -23,8 +23,8 @@ function App() {
       <Banner />
       <div className="App">
         <Routes>
-          <Route path="/home-page" element={<HomePage/>} />
-          <Route path="/" element={<QuizComponent/>} />
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/component" element={<QuizComponent/>} />
           <Route path="/quiz-form" element={<QuizForm/>} />
           <Route path="/quiz-page" element={<QuizPage />} />
           <Route path="/result" element={<QuizResult />} />
