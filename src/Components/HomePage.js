@@ -46,7 +46,7 @@ const HomePage = () => {
               <div className='divStyle'style={{ 'backgroundImage': `url(${slideImage.url})` }}>
                 <span className='pictureNumber'>{index + 1}</span>
               </div>
-              <div className='panStyle'>{slideImage.caption}</div>
+              <div className='panStyle'><h3>{slideImage.caption}</h3></div>
             </div>
           ))}
         </Slide>
