@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const LogoutButton = ({ onLogout }) => {
   const navigate = useNavigate();
 
+  // Déconnecte l'utilisateur et le renvoi sur la page de connection
   const handleClick = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');

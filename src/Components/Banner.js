@@ -5,6 +5,7 @@ import { useLogin } from './Users/LoginContext';
 
 const Banner = () => {
 
+  // vérifie si l'utilisateur est connecté pour afficher les bons boutons
   const { isLoggedIn, updateLoginStatus } = useLogin();
 
   return (

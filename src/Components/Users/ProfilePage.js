@@ -16,6 +16,7 @@ const ProfilePage = () => {
     return moment(dateString).tz('Europe/Paris').format('DD/MM/YYYY');
   };
 
+  // récupére les scores obtenus par l'utilisateur connecté
   useEffect(() => {
     axios.get('http://localhost:3000/api/user/profil', {
       headers: {

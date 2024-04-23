@@ -5,6 +5,8 @@ import { useLogin } from '../Users/LoginContext';
 import '../../style/result.css';
 
 const QuizResult = () => {
+
+  // récupére le score
   const location = useLocation();
   const { isLoggedIn } = useLogin();
 

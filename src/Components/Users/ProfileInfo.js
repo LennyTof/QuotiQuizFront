@@ -7,6 +7,7 @@ import '../../style/profile.css';
 const ProfileInfo = () => {
   const [userProfile, setUserProfile] = useState(null);
 
+  // récupére les informations de l'utilisateur connecté
   useEffect(() => {
     axios.get('http://localhost:3000/api/user/profil', {
       headers: {

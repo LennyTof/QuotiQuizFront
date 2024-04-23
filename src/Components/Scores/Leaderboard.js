@@ -12,11 +12,14 @@ const Leaderboard = () => {
     return new Date()
   }
 
+  // affiche les dates au format français
   const formatDate = (dateString) => {
     return moment(dateString).tz('Europe/Paris').format('DD/MM');
   };
 
   useEffect(() => {
+
+    // récupére les scores globals du jour
     const fetchDailyScores = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/user/daily-leaderboard');

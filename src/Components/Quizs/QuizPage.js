@@ -17,10 +17,12 @@ const QuizPage = () => {
     fetchRandomQuiz();
   }, []);
 
+  // récupére une question aléatoire depuis la base de donnée et la stock le temps du quiz
   const fetchRandomQuiz = async () => {
     try {
       const response = await axios.get('http://localhost:3000/api/quiz/random');
 
+      // vérifie que la question n'a pas déjà été posée
       if(askedQuestions.includes(response.data._id)) {
         fetchRandomQuiz();
         return;
@@ -33,9 +35,10 @@ const QuizPage = () => {
   };
 
   const handleAnswerClick = () => {
+
+    // vérifie si la réponse est correcte
     const isAnswerCorrect = selectedAnswer === quiz.correctAnswer;
     setIsCorrect(isAnswerCorrect);
-
 
     if (isAnswerCorrect) {
       setRightAnswer(prev => prev +1);
@@ -46,18 +49,20 @@ const QuizPage = () => {
 
     setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
 
+    // au bout de 5 questions répondues, termine le quiz est redirige sur la page de score
     if (askedQuestions.length === 5) {
       const totalScore = rightAnswer + (isAnswerCorrect ? 1 : 0);
 
       setTimeout(() => {
         handleQuizCompletion(totalScore);
-        navigate('/result', { state: totalScore });
+        navigate('/result', { state: totalScore }); // transfère le score pour l'afficher sur la page de resultat
       }, 500);
     } else {
       fetchRandomQuiz();
     }
   };
 
+  // créer un score basé sur les réponses du  quiz et le lie à l'utilisateur
   const handleQuizCompletion = async (totalScore) => {
     const token = localStorage.getItem('token');
     try {
