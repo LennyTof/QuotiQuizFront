@@ -50,7 +50,7 @@ const ProfilePage = () => {
               <h2>Scores :</h2>
                 <ul className='score-list'>
                   {userProfile.scores.map((score, index) => (
-                    <li key={index}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
+                    <li key={index} className='personnal-score'>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
 
                   ))}
                 </ul>

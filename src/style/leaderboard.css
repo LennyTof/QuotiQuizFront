@@ -1,4 +1,22 @@
+.leaderboard {
+  display: inline-block;
+}
+
 .scoreList {
   list-style-type: none;
 }
 
+.score {
+  background-color: white;
+  border-radius: 20px;
+  border-color: black;
+  border: solid;
+  margin: 10px;
+  padding: 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.yellow {
+  background-color: yellowgreen;
+}

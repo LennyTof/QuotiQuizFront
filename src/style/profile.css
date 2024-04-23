@@ -7,9 +7,21 @@
 }
 
 .score-list {
+  display: inline-block;
   list-style-type: none;
   height: 60vh;
   overflow-y: scroll;
+}
+
+.personnal-score {
+  background-color: white;
+  border-radius: 20px;
+  border-color: black;
+  border: solid;
+  margin: 10px;
+  padding: 2px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .score-list::-webkit-scrollbar {
   width: 10px;
