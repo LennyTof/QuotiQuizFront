@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import '../style/homepage.css';
@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <h2>Bonjour et bienvenue sur mon premier project sous React et Node.js</h2>
+        <h2 className='homepage-title'>Bonjour et bienvenue sur mon premier project sous React et Node.js</h2>
       </div>
       <div className={`slide-containter`}>
         <Slide>
