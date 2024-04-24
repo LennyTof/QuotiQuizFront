@@ -26,6 +26,18 @@ const NewQuizList = () => {
       });
   };
 
+  const handleAccept = (quiz) => {
+    axios.post(`http://localhost:3000/api/quiz`, quiz)
+      .then(() => {
+        alert('Quiz ajouté dans la base de données');
+        handleDelete(quiz._id);
+      })
+      .catch(error => {
+        alert("Echec de l'ajout du quiz")
+        console.error("Erreur lors de l'ajout du quiz :",  error);
+      });
+  };
+
   return (
     <>
       <h1>Questions proposés par les utilisateurs</h1>
@@ -40,8 +52,10 @@ const NewQuizList = () => {
                   <li key={index}>{answer}</li>
                 ))}
               </ul>
-            </div>
             <button className="btn btn-danger" onClick={() => handleDelete(quiz._id)}>Supprimer</button>
+            {/* <button className="btn btn-warning" onClick={() => handleChange(quiz._id)}>Modifier</button> */}
+            <button className="btn btn-success" onClick={() => handleAccept(quiz)}>Ajouter la question dans la liste</button>
+            </div>
           </li>
         ))}
 
