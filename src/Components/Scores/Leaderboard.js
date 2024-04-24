@@ -35,11 +35,18 @@ const Leaderboard = () => {
   return (
     <div className="leaderboard">
       <h2>Les scores du jour {formatDate(todayDate())}</h2>
-      <ul className="scoreList">
-        {scores.map((score, index) => (
-          <li key={index} className={score.user.username === userUsername ? "score yellow" : "score"}> {score.user.username === userUsername ? `Vous avez obtenu ${score.value}/5 à votre quiz aujourd'hui !` : `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}</li>
-       ))}
-      </ul>
+      {scores.length === 0 ?
+        <h3>Il n'y a pas eu de participant pour l'instant</h3> :
+        <ul className="scoreList">
+          {scores.map((score, index) => (
+            <li key={index} className={score.user.username === userUsername ? "score yellow" : "score"}>
+               {score.user.username === userUsername ?
+                `Vous avez obtenu ${score.value}/5 à votre quiz aujourd'hui !` :
+                `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}
+            </li>
+          ))}
+        </ul>
+      }
     </div>
   );
 };

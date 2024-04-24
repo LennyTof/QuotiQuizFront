@@ -23,6 +23,18 @@ const QuizComponent = () => {
     }
   };
 
+  const handleDelete = (quizId) => {
+    axios.delete(`http://localhost:3000/api/quiz/${quizId}`)
+      .then(() => {
+        alert('Quiz supprimé avec succès!');
+        fetchQuizList();
+      })
+      .catch(error => {
+        alert('Erreur lors de la suppression du quiz');
+        console.error("Erreur lors de la suppression :", error);
+      });
+  };
+
   return (
     <div>
       <h1>Cette page ne sera pas affichée pour les utilisateurs</h1>
@@ -43,6 +55,7 @@ const QuizComponent = () => {
                     <li key={index} onClick={() => handleAnswerClick(answer, quiz.correctAnswer)}>{answer}</li>
                   ))}
                 </ul>
+                <button className="btn btn-danger" onClick={() => handleDelete(quiz._id)}>Supprimer</button>
               </div>
             </li>
           ))}

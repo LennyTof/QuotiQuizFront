@@ -13,6 +13,7 @@ import ProfilePage from "./Components/Users/ProfilePage";
 import ProfileInfo from "./Components/Users/ProfileInfo";
 import Leaderboard from "./Components/Scores/Leaderboard";
 import Banner from "./Components/Banner";
+import NewQuizList from "./Components/Quizs/NewQuizList";
 import { LoginProvider } from './Components/Users/LoginContext';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/profil-info" element={<ProfileInfo />} />
           <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/asked-question" element={<NewQuizList />} />
         </Routes>
       </div>
       </LoginProvider>

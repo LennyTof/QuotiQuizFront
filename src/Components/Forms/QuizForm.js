@@ -36,14 +36,13 @@ const QuizForm = ({ onQuizSubmit}) => {
       correctAnswer: correctAnswer.trim(),
     };
 
-    axios.post('http://localhost:3000/api/quiz', newQuiz)
+    axios.post('http://localhost:3000/api/quiz/asked', newQuiz)
       .then(response => alert("Quiz ajouté !"))
       .catch(error => alert("Erreur lors de l'ajout du quiz. Essayez à nouveau"));
-
     };
     return (
       <div>
-        <h2>Ajoute ton Quiz</h2>
+        <h2>Propose ta question</h2>
         <form onSubmit={handleSubmit}>
           <label>
             Question :
@@ -72,7 +71,7 @@ const QuizForm = ({ onQuizSubmit}) => {
             La Bonne Réponse :
             <input type="text" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} placeholder="Récrivez la bonne réponse"></input>
           </label>
-          <button type="submit">Ajouter le Quiz</button>
+          <button type="submit">Envoyer</button>
         </form>
       </div>
     );

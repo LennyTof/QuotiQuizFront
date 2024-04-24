@@ -15,7 +15,7 @@ const QuizResult = () => {
   const questionPlural = numberOfCorrectAnswer >= 2 ? "questions" : "question";
 
   return (
-    <div>
+    <>
       <h1 className="mt-3">Quiz terminé !</h1>
       <div className="container">
         <h2 className="result">
@@ -23,7 +23,7 @@ const QuizResult = () => {
         </h2>
       </div>
         <h4>{!isLoggedIn && 'Connecte toi pour enregistrer ton score !'}</h4>
-    </div>
+    </>
   );
 };
 
