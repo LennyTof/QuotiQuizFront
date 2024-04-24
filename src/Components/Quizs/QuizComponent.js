@@ -35,6 +35,13 @@ const QuizComponent = () => {
       });
   };
 
+  const shuffle = (array) => {
+    for (let i = array.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
   return (
     <div>
       <h1>Cette page ne sera pas affichée pour les utilisateurs</h1>
@@ -48,6 +55,7 @@ const QuizComponent = () => {
         <ul style={{listStyleType: "none"}}>
           {quizList.map(quiz => (
             <li key={quiz._id}>
+              {shuffle(quiz.options)}
               <div>
                 <h3>{quiz.question}</h3>
                 <ul style={{listStyleType: "none"}}>

@@ -27,6 +27,7 @@ const QuizPage = () => {
         fetchRandomQuiz();
         return;
       }
+      shuffle(response.data.options)
       setAskedQuestions([...askedQuestions, response.data._id]);
       setQuiz(response.data);
     } catch (error) {
@@ -77,6 +78,13 @@ const QuizPage = () => {
     } catch (error) {
       console.error("Erreur lors de l'enregistrement du score:", error)
 ;    };
+  };
+
+  const shuffle = (array) => {
+    for (let i = array.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   };
 
   if (!quiz) {
