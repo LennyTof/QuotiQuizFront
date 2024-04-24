@@ -18,22 +18,22 @@ const QuizForm = ({ onQuizSubmit}) => {
       return;
     }
 
-    if (!question.trim() || !option1.trim() || !option2.trim() || !option3.trim() || !option4.trim() || !correctAnswer.trim()) {
+    if (!question.trim() || !option1.trim() || !option2.trim() || !option3.trim() || !option4.trim()) {
       alert('Champs non remplis');
       return;
     }
 
-    const options = [option1.trim(), option2.trim(), option3.trim(), option4.trim()];
+    // const options = [option1.trim(), option2.trim(), option3.trim(), option4.trim()];
 
-    if (!options.includes(correctAnswer.trim())) {
-      alert("La bonne réponse doit être l'une des réponses écrites.")
-      return;
-    }
+    // if (!options.includes(correctAnswer.trim())) {
+    //   alert("La bonne réponse doit être l'une des réponses écrites.")
+    //   return;
+    // }
 
     const newQuiz = {
       question: question.trim(),
       options: [option1.trim(), option2.trim(), option3.trim(), option4.trim()],
-      correctAnswer: correctAnswer.trim(),
+      correctAnswer: option4.trim(),
     };
 
     axios.post('http://localhost:3000/api/quiz/asked', newQuiz)
@@ -63,13 +63,13 @@ const QuizForm = ({ onQuizSubmit}) => {
             <input type="text" value={option3} onChange={(e) => setOption3(e.target.value)}></input>
           </label>
           <label>
-            Réponse 4:
+            Réponse 4 (Bonne Réponse):
             <input type="text" value={option4} onChange={(e) => setOption4(e.target.value)}></input>
           </label>
           <br />
-          <label>
+          <label className="d-none">
             La Bonne Réponse :
-            <input type="text" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} placeholder="Récrivez la bonne réponse"></input>
+            <input type="text" value={option4} onChange={(e) => setCorrectAnswer(option4)} placeholder="Récrivez la bonne réponse"></input>
           </label>
           <button type="submit">Envoyer</button>
         </form>
