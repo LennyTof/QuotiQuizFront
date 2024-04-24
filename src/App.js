@@ -14,7 +14,7 @@ import ProfileInfo from "./Components/Users/ProfileInfo";
 import Leaderboard from "./Components/Scores/Leaderboard";
 import Banner from "./Components/Banner";
 import NewQuizList from "./Components/Quizs/NewQuizList";
-import { LoginProvider } from './Components/Users/LoginContext';
+import { LoginProvider, useLogin } from './Components/Users/LoginContext';
 
 function App() {
 

@@ -41,7 +41,7 @@ const Leaderboard = () => {
           {scores.map((score, index) => (
             <li key={index} className={score.user.username === userUsername ? "score yellow" : "score"}>
                {score.user.username === userUsername ?
-                `Vous avez obtenu ${score.value}/5 à votre quiz aujourd'hui !` :
+                `Tu as obtenu ${score.value}/5 à ton quiz aujourd'hui !` :
                 `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}
             </li>
           ))}
