@@ -17,7 +17,8 @@ const LoginForm = () => {
         password,
       });
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('username', response.data.username )
+      localStorage.setItem('username', response.data.username);
+      localStorage.setItem('roles', response.data.roles);
       updateLoginStatus(true);
       navigate('/profil');
     } catch (error) {

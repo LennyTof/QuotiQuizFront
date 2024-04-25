@@ -42,6 +42,10 @@ const QuizComponent = () => {
     }
   };
 
+  if (localStorage.roles !== 'admin') {
+    return <h3>Vous n'avez pas les droits pour accéder à cette page</h3>
+  }
+
   return (
     <div>
       <h1>Cette page ne sera pas affichée pour les utilisateurs</h1>

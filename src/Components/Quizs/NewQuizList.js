@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
+// Page recevant les questions proposés par les utilisateurs, ajout de méthode pour les valider ou supprimer
+
 const NewQuizList = () => {
   const [quizList, setQuizList] = useState([]);
 
@@ -38,10 +40,13 @@ const NewQuizList = () => {
       });
   };
 
+  if (localStorage.roles !== 'admin') {
+    return <h3>Vous n'avez pas les droits pour accéder à cette page</h3>
+  }
+
   return (
     <>
-      <h1>Questions proposés par les utilisateurs</h1>
-      {console.log(quizList)}
+      <h1>Questions proposées par les utilisateurs</h1>
       <ul>
         {quizList.map((quiz) => (
           <li key={quiz._id}>
