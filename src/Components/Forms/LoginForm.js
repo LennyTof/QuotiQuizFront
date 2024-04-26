@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../Users/LoginContext';
 
@@ -18,7 +18,6 @@ const LoginForm = () => {
       });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
-      localStorage.setItem('roles', response.data.roles);
       updateLoginStatus(true);
       navigate('/profil');
     } catch (error) {

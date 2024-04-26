@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
 import  axios  from "axios";
 import { Link } from 'react-router-dom';
+import isAdmin  from '../Users/IsAdmin';
 
 const QuizComponent = () => {
   const [quizList, setQuizList] = useState([]);
@@ -42,8 +43,8 @@ const QuizComponent = () => {
     }
   };
 
-  if (localStorage.roles !== 'admin') {
-    return <h3>Vous n'avez pas les droits pour accéder à cette page</h3>
+  if (!isAdmin()) {
+    return <h2>Vous n'avez pas les droits pour accéder à cette page</h2>
   }
 
   return (

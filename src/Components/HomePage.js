@@ -14,11 +14,11 @@ const slideImages = [
   },
   {
     url: `${image2}`,
-    caption: 'Suivez vos scores'
+    caption: 'Suis tes scores'
   },
   {
     url: `${image3}`,
-    caption: 'Et comparez les avec les autres utilisateurs !'
+    caption: "Compare les avec d'autres joueurs !"
   },
 ];
 
@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <h2 className='homepage-title'>Bonjour et bienvenue sur mon premier project sous React et Node.js</h2>
+        <h2 className='homepage-title'>Mon premier project sous React et Node.js</h2>
       </div>
       <div className={`slide-containter`}>
         <Slide>

@@ -3,6 +3,11 @@
   color: white;
 }
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title {
   text-align: center;
   padding: 10px;
@@ -11,4 +16,3 @@
 .link {
   text-align: center;
 }
-
