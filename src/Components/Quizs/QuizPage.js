@@ -11,11 +11,21 @@ const QuizPage = () => {
   const [rightAnswer, setRightAnswer] = useState(0);
   const [answeredQuestions, setAnswerQuestions] = useState([]);
   const [announcement, setAnnoucement] = useState('');
+  const [quizDetails, setQuizDetails] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchRandomQuiz();
   }, []);
+
+  useEffect(() => {
+    // au bout de 5 questions répondues, termine le quiz est redirige sur la page de score
+    if (askedQuestions.length === 5 && quizDetails.length === 5) {
+      const totalScore = rightAnswer;
+      handleQuizCompletion(totalScore, quizDetails);
+      navigate('/result', { state: { totalScore, quizDetails } });
+    }
+  }, [quizDetails, askedQuestions.length, rightAnswer, navigate]);
 
   // récupére une question aléatoire depuis la base de donnée et la stock le temps du quiz
   const fetchRandomQuiz = async () => {
@@ -48,27 +58,29 @@ const QuizPage = () => {
       setAnnoucement('Mauvaise réponse :(')
     };
 
+    setQuizDetails(prevDetails => [...prevDetails, {
+      question: quiz.question,
+      userAnswer: selectedAnswer,
+      correctAnswer: quiz.correctAnswer
+    }]);
+
     setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
 
     // au bout de 5 questions répondues, termine le quiz est redirige sur la page de score
-    if (askedQuestions.length === 5) {
-      const totalScore = rightAnswer + (isAnswerCorrect ? 1 : 0);
-
-      setTimeout(() => {
-        handleQuizCompletion(totalScore);
-        navigate('/result', { state: totalScore }); // transfère le score pour l'afficher sur la page de resultat
-      }, 500);
-    } else {
+    if (askedQuestions.length !== 5 ) {
       fetchRandomQuiz();
     }
   };
 
   // créer un score basé sur les réponses du  quiz et le lie à l'utilisateur
-  const handleQuizCompletion = async (totalScore) => {
+  const handleQuizCompletion = async (totalScore, quizDetails) => {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post('http://localhost:3000/api/user/score',
-      { score: totalScore },
+      {
+         score: totalScore,
+         quizDetails: quizDetails
+      },
       {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -80,6 +92,7 @@ const QuizPage = () => {
 ;    };
   };
 
+  //méthode utilisée pour mélanger les questions
   const shuffle = (array) => {
     for (let i = array.length -1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

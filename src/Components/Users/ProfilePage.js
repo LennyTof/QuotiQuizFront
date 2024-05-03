@@ -32,6 +32,11 @@ const ProfilePage = () => {
     });
   }, []);
 
+  function handleShowDetails(score) {
+    // Afficher une modale ou changer l'état pour montrer les détails
+    console.log(score.quizDetails);
+  }
+
   return (
     <div>
       {isLoggedIn ? (
@@ -51,7 +56,7 @@ const ProfilePage = () => {
               <h2>Scores :</h2>
                 <ul className='score-list'>
                   {userProfile.scores.map((score, index) => (
-                    <li key={index} className='personnal-score'>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
+                    <li key={index} className='personnal-score' onClick={() => handleShowDetails(score)}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
 
                   ))}
                 </ul>

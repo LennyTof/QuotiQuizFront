@@ -10,7 +10,7 @@ const QuizResult = () => {
   const location = useLocation();
   const { isLoggedIn } = useLogin();
 
-  let numberOfCorrectAnswer = location.state ?? 0;
+  let numberOfCorrectAnswer = location.state.totalScore ?? 0;
 
   const questionPlural = numberOfCorrectAnswer >= 2 ? "questions" : "question";
 
@@ -22,6 +22,11 @@ const QuizResult = () => {
           Tu as correctement répondu à {numberOfCorrectAnswer} {questionPlural} sur 5 !
         </h2>
       </div>
+      <ul>
+            {location.state.quizDetails.map((score, index) => (
+              <li key={index}>{score.question}{score.userAnswer}</li>
+            ))}
+          </ul>
         <h4>{!isLoggedIn && 'Connecte toi pour enregistrer ton score !'}</h4>
     </>
   );
