@@ -1,6 +1,6 @@
 import "../../style/scoredisplay.css";
 
-const ScoreDisplay = ({quizDetails, onClose}) => {
+const ScoreDisplay = ({quizDetails, onClose, showAnswers}) => {
 
   return (
     <>
@@ -9,7 +9,11 @@ const ScoreDisplay = ({quizDetails, onClose}) => {
           <li key={index}>
             <div>
               <h3>{quiz.question} :</h3>
-              <span className={quiz.userAnswer === quiz.correctAnswer ? "green" : "red"}>{quiz.userAnswer}</span>
+              {showAnswers ? (
+                <span className={quiz.userAnswer === quiz.correctAnswer ? "green" : "red"}>{quiz.userAnswer}</span>
+              ) : (
+                <span className={quiz.userAnswer === quiz.correctAnswer ? "green" : "red"}>{quiz.userAnswer === quiz.correctAnswer ? "Bonne réponse" : "Mauvaise réponse"}</span>
+              )}
             </div>
           </li>
           ))}

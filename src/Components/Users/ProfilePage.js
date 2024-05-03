@@ -63,7 +63,7 @@ const ProfilePage = () => {
                   ))}
                 </ul>
                   {showScoreModal && activeScoreDetails && (
-                    <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} />
+                    <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} showAnswers={true} />
                   )}
             </div>
           )}
