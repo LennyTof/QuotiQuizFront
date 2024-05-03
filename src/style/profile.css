@@ -29,8 +29,14 @@
   cursor: pointer;
 }
 
+.score-and-details {
+  display: flex;
+  justify-content: center;
+}
+
 .score-list::-webkit-scrollbar {
   width: 10px;
+  
 }
 
 .score-list::-webkit-scrollbar-thumb {
@@ -45,4 +51,10 @@
   border-radius: 10px;
   padding: 2px 0;
   background-color: #4c6761;
+}
+
+@media (max-width: 1000px) {
+  .score-and-details {
+    display: grid;
+}
 }

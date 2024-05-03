@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import moment from "moment-timezone";
 import ScoreDisplay from "./ScoreDisplay";
 import '../../style/leaderboard.css';
@@ -8,6 +8,7 @@ const Leaderboard = () => {
   const [scores, setScores] = useState([]);
   const [showScoreModal, setShowScoreModal] = useState(false);
   const [activeScoreDetails, setActiveScoreDetails] = useState(null);
+  const scoreDisplayRef = useRef(null)
 
   const userUsername = localStorage.getItem('username');
 
@@ -35,6 +36,12 @@ const Leaderboard = () => {
     fetchDailyScores();
   }, []);
 
+  useEffect(() => {
+    if (showScoreModal && scoreDisplayRef.current) {
+      scoreDisplayRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showScoreModal]);
+
   const handleShowDetails = (score) => {
     setActiveScoreDetails(score.quizDetails);
     setShowScoreModal(true);
@@ -44,20 +51,24 @@ const Leaderboard = () => {
     <div className="leaderboard">
       <h2>Les scores du jour {formatDate(todayDate())}</h2>
       {scores.length === 0 ?
-        <h3>Il n'y a pas eu de participant pour l'instant</h3> :
-        <ul className="score-list">
-          {scores.map((score, index) => (
-            <li key={index} className={score.user.username === userUsername ? "score yellow" : "score"} onClick={() => handleShowDetails(score)}>
-               {score.user.username === userUsername ?
-                `Tu as obtenu ${score.value}/5 à ton quiz aujourd'hui !` :
-                `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}
-            </li>
-          ))}
-        </ul>
+        <h3>Il n'y a pas eu de participant pour l'instant</h3>
+        : <div className="score-and-details">
+            <ul className="score-list">
+                {scores.map((score, index) => (
+                  <li key={index} className={score.user.username === userUsername ? "score yellow" : "score"} onClick={() => handleShowDetails(score)}>
+                    {score.user.username === userUsername ?
+                      `Tu as obtenu ${score.value}/5 à ton quiz aujourd'hui !` :
+                      `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}
+                  </li>
+                ))}
+              </ul>
+              <div ref={scoreDisplayRef}>
+                {showScoreModal && activeScoreDetails && (
+                  <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} showAnswers={false} />
+                )}
+              </div>
+        </div>
       }
-      {showScoreModal && activeScoreDetails && (
-        <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} showAnswers={false} />
-      )}
     </div>
   );
 };

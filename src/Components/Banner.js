@@ -16,6 +16,7 @@ const Banner = () => {
           {isLoggedIn ? <LogoutButton className="btn btn-success m-1" onLogout={() => updateLoginStatus(false)}/> :  <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
       </div>
       <Link to="/" style={{ textDecoration:'none', color:'white'}}><h1 className="title">QuotiQuiz</h1></Link>
+      <Link to="/" style={{ textDecoration:'none', color:'white'}}><h3 className="title">Le site de quiz quotidien</h3></Link>
       <div className='m-l 3 link'>
         {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
         <div className='space-between'>

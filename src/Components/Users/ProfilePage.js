@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import moment from 'moment-timezone';
 import { useLogin } from './LoginContext';
 import InfoForm from '../Forms/InfoForm';
@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const [showScoreModal, setShowScoreModal] = useState(false)
   const [activeScoreDetails, setActiveScoreDetails] = useState(null);
   const isLoggedIn = useLogin();
+  const scoreDisplayRef = useRef(null);
 
   const formatDate = (dateString) => {
     return moment(dateString).tz('Europe/Paris').format('DD/MM/YYYY');
@@ -35,6 +36,12 @@ const ProfilePage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (showScoreModal && scoreDisplayRef.current) {
+      scoreDisplayRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showScoreModal]);
+
   const handleShowDetails = (score) => {
     setActiveScoreDetails(score.quizDetails)
     setShowScoreModal(true)
@@ -54,18 +61,21 @@ const ProfilePage = () => {
             {showModal ? (
             <div></div>
           ) : (
-            <div>
-              <h4>Tu as déjà répondu à {userProfile.scores.length} quiz !</h4>
-              <h2>Scores :</h2>
+            <>
+              <h3>N'hésite pas à cliquer sur tes scores</h3>
+              <div className='score-and-details'>
                 <ul className='score-list'>
                   {userProfile.scores.map((score, index) => (
                     <li key={index} className='personnal-score' onClick={() => handleShowDetails(score)}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
                   ))}
                 </ul>
+                <div ref={scoreDisplayRef}>
                   {showScoreModal && activeScoreDetails && (
                     <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} showAnswers={true} />
                   )}
-            </div>
+                </div>
+              </div>
+            </>
           )}
           </div>
         ) : (

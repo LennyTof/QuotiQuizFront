@@ -31,7 +31,12 @@ function App() {
           <Route path="/result" element={<QuizResult />} />
           <Route path="/profil" element={<ProfilePage />} />
           <Route path="/profil-info" element={<ProfileInfo />} />
-          <Route path="/login" element={<><LoginForm /><SignUpForm /></>} />
+          <Route path="/login" element={
+              <div className="login-container">
+                <LoginForm className="login-form" />
+                <SignUpForm className="login-form" />
+              </div>
+            } />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/asked-question" element={<NewQuizList />} />
         </Routes>

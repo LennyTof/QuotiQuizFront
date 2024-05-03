@@ -26,9 +26,6 @@ const HomePage = () => {
 
   return (
     <>
-      <div>
-        <h2 className='homepage-title'>Mon premier project sous React et Node.js</h2>
-      </div>
       <div className={`slide-containter`}>
         <Slide>
          {slideImages.map((slideImage, index)=> (
@@ -40,6 +37,7 @@ const HomePage = () => {
             </div>
           ))}
         </Slide>
+        <h3 className='mt-3'>N'hésite pas à t'inscrire avant si tu veux avoir accès à ton historique détaillé !</h3>
       </div>
     </>
   )

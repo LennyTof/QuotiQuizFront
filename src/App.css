@@ -7,6 +7,47 @@
   pointer-events: none;
 }
 
+.login-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  padding: 20px;
+}
+
+.login-form {
+  flex: 1;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+@media (max-width: 800px) {
+  .login-container {
+    flex-direction: column;
+  }
+}
+
+.btn-success {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-success:hover {
+  background-color: #3a8a3d;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

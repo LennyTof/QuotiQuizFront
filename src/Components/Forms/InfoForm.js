@@ -59,7 +59,7 @@ const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
         />
         <button type='submit'>Modifier</button>
       </form>
-      <button onClick={onClose} className='btn btn-success'>Fermer</button>
+      <button onClick={onClose}>Fermer</button>
     </div>
   );
 };
