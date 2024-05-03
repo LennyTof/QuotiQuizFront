@@ -50,11 +50,6 @@ const QuizComponent = () => {
   return (
     <div>
       <h1>Cette page ne sera pas affichée pour les utilisateurs</h1>
-      <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>
-      <Link to="/profil" className='btn btn-success mb-1'>Profil</Link>
-      <Link to="/quiz-page" className='btn btn-success mb-1'>Passer au test</Link>
-      <br />
-      <Link to="/quiz-form" className='btn btn-success'>Rajouter des questions</Link>
       <div className="App">
         <h2>Liste des Questions</h2>
         <ul style={{listStyleType: "none"}}>

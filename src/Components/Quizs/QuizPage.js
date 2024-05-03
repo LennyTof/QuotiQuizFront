@@ -76,6 +76,7 @@ const QuizPage = () => {
   const handleQuizCompletion = async (totalScore, quizDetails) => {
     const token = localStorage.getItem('token');
     try {
+      console.log(quizDetails)
       const response = await axios.post('http://localhost:3000/api/user/score',
       {
          score: totalScore,

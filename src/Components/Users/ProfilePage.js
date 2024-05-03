@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import moment from 'moment-timezone';
 import { useLogin } from './LoginContext';
 import InfoForm from '../Forms/InfoForm';
+import ScoreDisplay from '../Scores/ScoreDisplay';
 
 import '../../style/profile.css';
 
@@ -10,6 +11,8 @@ import '../../style/profile.css';
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [showModal, setShowModal] = useState(false)
+  const [showScoreModal, setShowScoreModal] = useState(false)
+  const [activeScoreDetails, setActiveScoreDetails] = useState(null);
   const isLoggedIn = useLogin();
 
   const formatDate = (dateString) => {
@@ -32,10 +35,10 @@ const ProfilePage = () => {
     });
   }, []);
 
-  function handleShowDetails(score) {
-    // Afficher une modale ou changer l'état pour montrer les détails
-    console.log(score.quizDetails);
-  }
+  const handleShowDetails = (score) => {
+    setActiveScoreDetails(score.quizDetails)
+    setShowScoreModal(true)
+  };
 
   return (
     <div>
@@ -57,9 +60,11 @@ const ProfilePage = () => {
                 <ul className='score-list'>
                   {userProfile.scores.map((score, index) => (
                     <li key={index} className='personnal-score' onClick={() => handleShowDetails(score)}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
-
                   ))}
                 </ul>
+                  {showScoreModal && activeScoreDetails && (
+                    <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} />
+                  )}
             </div>
           )}
           </div>

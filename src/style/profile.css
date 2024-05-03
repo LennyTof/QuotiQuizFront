@@ -23,6 +23,11 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.personnal-score:hover {
+  background-color: rgb(94, 94, 207);
+  cursor: pointer;
+}
 .score-list::-webkit-scrollbar {
   width: 10px;
 }
