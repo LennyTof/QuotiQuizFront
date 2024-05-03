@@ -2,8 +2,13 @@
   display: inline-block;
 }
 
-.scoreList {
+.score-list {
   list-style-type: none;
+}
+
+.score:hover {
+  background-color: rgb(94, 94, 207);
+  cursor: pointer;
 }
 
 .score {
