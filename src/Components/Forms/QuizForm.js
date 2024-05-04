@@ -37,7 +37,7 @@ const QuizForm = ({ onQuizSubmit}) => {
     };
 
     axios.post('http://localhost:3000/api/quiz/asked', newQuiz)
-      .then(response => alert("Quiz ajouté !"))
+      .then(response => alert("Quiz proposé avec succès !"))
       .catch(error => alert("Erreur lors de l'ajout du quiz. Essayez à nouveau"));
     };
     return (
