@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import '../../App.css';
+import '../../style/quizForm.css'
 
 const QuizForm = ({ onQuizSubmit}) => {
   const [question, setQuestion] = useState('');
@@ -41,37 +41,62 @@ const QuizForm = ({ onQuizSubmit}) => {
       .catch(error => alert("Erreur lors de l'ajout du quiz. Essayez à nouveau"));
     };
     return (
-      <div>
-        <h2>Propose ta question</h2>
+      <div className="quiz-form-container">
+        <h2 className="quiz-form-title">Propose ta question</h2>
         <form onSubmit={handleSubmit}>
-          <label>
+          <label className="quiz-form-label">
             Question :
-            <input type="text" value={question} onChange={(e) => setQuestion(e.target.value)}></input>
+            <input
+              type="text"
+              className="quiz-form-input"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+            />
           </label>
           <br />
-          <label>
+          <label className="quiz-form-label">
             Réponse 1:
-            <input type="text" value={option1} onChange={(e) => setOption1(e.target.value)}></input>
+            <input
+              type="text"
+              className="quiz-form-input"
+              value={option1}
+              onChange={(e) => setOption1(e.target.value)}
+            />
           </label>
-          <label>
+          <label className="quiz-form-label">
             Réponse 2:
-            <input type="text" value={option2} onChange={(e) => setOption2(e.target.value)}></input>
+            <input
+              type="text"
+              className="quiz-form-input"
+              value={option2}
+              onChange={(e) => setOption2(e.target.value)}
+            />
           </label>
-          <label>
+          <label className="quiz-form-label">
             <br />
             Réponse 3:
-            <input type="text" value={option3} onChange={(e) => setOption3(e.target.value)}></input>
+            <input
+              type="text"
+              className="quiz-form-input"
+              value={option3}
+              onChange={(e) => setOption3(e.target.value)}
+            />
           </label>
-          <label>
+          <label className="quiz-form-label">
             Réponse 4 (Bonne Réponse):
-            <input type="text" value={option4} onChange={(e) => setOption4(e.target.value)}></input>
+            <input
+              type="text"
+              className="quiz-form-input"
+              value={option4}
+              onChange={(e) => setOption4(e.target.value)}
+            />
           </label>
           <br />
           <label className="d-none">
             La Bonne Réponse :
             <input type="text" value={option4} onChange={(e) => setCorrectAnswer(option4)} placeholder="Récrivez la bonne réponse"></input>
           </label>
-          <button type="submit">Envoyer</button>
+          <button type="submit" className="quiz-form-button">Envoyer</button>
         </form>
       </div>
     );
