@@ -14,7 +14,7 @@
 }
 
 .personnal-score {
-  background-color: white;
+  background-color: #c8c8c8;
   border-radius: 20px;
   border-color: black;
   border: solid;
@@ -36,7 +36,7 @@
 
 .score-list::-webkit-scrollbar {
   width: 10px;
-  
+
 }
 
 .score-list::-webkit-scrollbar-thumb {
