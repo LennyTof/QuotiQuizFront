@@ -1,14 +1,34 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-}
-
 .result {
   width: 80%;
   max-width: 600px;
   padding: 20px;
   border-radius: 8px;
   border: 1px solid black;
+}
+
+.list-result {
+  list-style-type: none;
+}
+
+.result-display {
+  display: inline-block;
+  background-color: rgb(200, 200, 200);
+  border-radius: 20px;
+  border-color: black;
+  border: solid;
+  margin: 10px;
+  padding: 10px;
+}
+
+.result-answer {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.correct {
+  background-color: green;
+}
+
+.false {
+  background-color: rgb(176, 52, 52);
 }

@@ -13,20 +13,24 @@ const QuizResult = () => {
   let numberOfCorrectAnswer = location.state.totalScore ?? 0;
 
   const questionPlural = numberOfCorrectAnswer >= 2 ? "questions" : "question";
-
   return (
     <>
       <h1 className="mt-3">Quiz terminé !</h1>
-      <div className="container">
-        <h2 className="result">
+      <div className="result-display">
+        <h3>
           Tu as correctement répondu à {numberOfCorrectAnswer} {questionPlural} sur 5 !
-        </h2>
-      </div>
-      <ul>
+        </h3>
+        <ul className="list-result">
             {location.state.quizDetails.map((score, index) => (
-              <li key={index}>{score.question}{score.userAnswer}</li>
-            ))}
+              <li key={index}>
+                <div>
+                  <h5>{score.question}</h5>
+                  <span className={score.userAnswer === score.correctAnswer ? "correct result-answer" : "false result-answer"}>{score.userAnswer}</span>
+                </div>
+              </li>
+              ))}
           </ul>
+        </div>
         <h4>{!isLoggedIn && 'Connecte toi pour enregistrer ton score !'}</h4>
     </>
   );
