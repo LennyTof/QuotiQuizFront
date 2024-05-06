@@ -37,7 +37,15 @@ const QuizForm = ({ onQuizSubmit}) => {
     };
 
     axios.post('http://localhost:3000/api/quiz/asked', newQuiz)
-      .then(response => alert("Quiz proposé avec succès !"))
+      .then(response => {
+        alert("Quiz proposé avec succès !");
+        setQuestion('');
+        setOption1('');
+        setOption2('');
+        setOption3('');
+        setOption4('');
+        setCorrectAnswer('');
+      })
       .catch(error => alert("Erreur lors de l'ajout du quiz. Essayez à nouveau"));
     };
     return (
@@ -54,44 +62,46 @@ const QuizForm = ({ onQuizSubmit}) => {
             />
           </label>
           <br />
-          <label className="quiz-form-label">
-            Réponse 1:
-            <input
-              type="text"
-              className="quiz-form-input"
-              value={option1}
-              onChange={(e) => setOption1(e.target.value)}
-            />
-          </label>
-          <label className="quiz-form-label">
-            Réponse 2:
-            <input
-              type="text"
-              className="quiz-form-input"
-              value={option2}
-              onChange={(e) => setOption2(e.target.value)}
-            />
-          </label>
-          <label className="quiz-form-label">
+          <div className="quiz-form-input-answers">
+            <label className="quiz-form-label">
+              Réponse 1:
+              <input
+                type="text"
+                className="quiz-form-input"
+                value={option1}
+                onChange={(e) => setOption1(e.target.value)}
+              />
+            </label>
+            <label className="quiz-form-label">
+              Réponse 2:
+              <input
+                type="text"
+                className="quiz-form-input"
+                value={option2}
+                onChange={(e) => setOption2(e.target.value)}
+              />
+            </label>
+            <label className="quiz-form-label">
+              <br />
+              Réponse 3:
+              <input
+                type="text"
+                className="quiz-form-input"
+                value={option3}
+                onChange={(e) => setOption3(e.target.value)}
+              />
+            </label>
+            <label className="quiz-form-label">
+              Réponse 4 (Bonne Réponse):
+              <input
+                type="text"
+                className="quiz-form-input"
+                value={option4}
+                onChange={(e) => setOption4(e.target.value)}
+              />
+            </label>
             <br />
-            Réponse 3:
-            <input
-              type="text"
-              className="quiz-form-input"
-              value={option3}
-              onChange={(e) => setOption3(e.target.value)}
-            />
-          </label>
-          <label className="quiz-form-label">
-            Réponse 4 (Bonne Réponse):
-            <input
-              type="text"
-              className="quiz-form-input"
-              value={option4}
-              onChange={(e) => setOption4(e.target.value)}
-            />
-          </label>
-          <br />
+          </div>
           <label className="d-none">
             La Bonne Réponse :
             <input type="text" value={option4} onChange={(e) => setCorrectAnswer(option4)} placeholder="Récrivez la bonne réponse"></input>
