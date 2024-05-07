@@ -57,8 +57,8 @@ const Leaderboard = () => {
                 {scores.map((score, index) => (
                   <li key={index} className={score.user.username === userUsername ? "score yellow" : "score"} onClick={() => handleShowDetails(score)}>
                     {score.user.username === userUsername ?
-                      `Tu as obtenu ${score.value}/5 à ton quiz aujourd'hui !` :
-                      `${score.user.username} a obtenu : ${score.value}/5 à son quiz aujourd'hui !`}
+                      `Tu as obtenu ${score.value}/5 à ton quiz !` :
+                      `${score.value}/5 on été obtenu par ${score.user.username} !`}
                   </li>
                 ))}
               </ul>
