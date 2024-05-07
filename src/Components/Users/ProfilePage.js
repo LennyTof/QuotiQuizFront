@@ -79,7 +79,10 @@ const ProfilePage = () => {
           )}
           </div>
         ) : (
-          <p>Chargement du profil...</p>
+          <>
+            <p>Chargement du profil...</p>
+            <p>Tu es peut être déconnecté</p>
+          </>
         )}
       </div>) : (
         <div>

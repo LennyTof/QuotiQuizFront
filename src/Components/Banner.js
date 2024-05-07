@@ -33,7 +33,7 @@ const Banner = () => {
         {isAdmin && <Link to="/asked-question" className='btn btn-success mb-1 me-1'>Accéder aux questions proposées</Link>}
         <Link to="/quiz-page" className='btn btn-success m-1' onClick={toggleSidebar}>Lancer une session Quiz</Link>
         <Link to="/quiz-form" className='btn btn-success m-1' onClick={toggleSidebar}>Propose une question</Link>
-        <Link to="/leaderboard" className='btn btn-success m-1' onClick={toggleSidebar}>Score Global</Link>
+        <Link to="/leaderboard" className='btn btn-success m-1' onClick={toggleSidebar}>Score Global du jour</Link>
       </div>
     </div>
   )

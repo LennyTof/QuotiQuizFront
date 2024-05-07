@@ -16,6 +16,7 @@ const QuizResult = () => {
   return (
     <>
       <h1 className="mt-3">Quiz terminé !</h1>
+      <h4>Tu peux accéder à l'historique de tes quiz dans ton profil et voir les résultats des autres via le menu !</h4>
       <div className="result-display">
         <h3>
           Tu as obtenu {numberOfCorrectAnswer} {questionPlural} sur 5 !
