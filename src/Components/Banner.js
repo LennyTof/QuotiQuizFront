@@ -1,8 +1,8 @@
-import '../style/banner.css';
 import LogoutButton from './Buttons/LogoutButton';
 import { Link } from 'react-router-dom';
 import { useLogin } from './Users/LoginContext';
 import isAdmin from './Users/IsAdmin';
+import '../style/banner.css';
 
 const Banner = () => {
 
