@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../Users/LoginContext';
+import { Link } from 'react-router-dom';
 import '../../style/connexionForm.css'
 
 const LoginForm = () => {
@@ -47,6 +48,7 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type='submit' className='form-button'>Se connecter</button>
+        <Link to='/password-forgot'>Mot de passe oublié ?</Link>
       </form>
     </div>
   );

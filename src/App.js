@@ -14,6 +14,7 @@ import ProfileInfo from "./Components/Users/ProfileInfo";
 import Leaderboard from "./Components/Scores/Leaderboard";
 import Banner from "./Components/Banner";
 import NewQuizList from "./Components/Quizs/NewQuizList";
+import PasswordForgot from "./Components/Forms/PasswordForgot";
 import { LoginProvider, useLogin } from './Components/Users/LoginContext';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             } />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/asked-question" element={<NewQuizList />} />
+          <Route path="/password-forgot" element={<PasswordForgot />} />
         </Routes>
       </div>
       </LoginProvider>
