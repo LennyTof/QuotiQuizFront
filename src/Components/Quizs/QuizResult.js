@@ -12,14 +12,15 @@ const QuizResult = () => {
 
   let numberOfCorrectAnswer = location.state.totalScore ?? 0;
 
-  const questionPlural = numberOfCorrectAnswer >= 2 ? "questions" : "question";
+  const questionPlural = numberOfCorrectAnswer >= 2 ? "bonnes réponses" : "bonne réponse";
   return (
     <>
       <h1 className="mt-3">Quiz terminé !</h1>
       <div className="result-display">
         <h3>
-          Tu as correctement répondu à {numberOfCorrectAnswer} {questionPlural} sur 5 !
+          Tu as obtenu {numberOfCorrectAnswer} {questionPlural} sur 5 !
         </h3>
+        <br/>
         <ul className="list-result">
             {location.state.quizDetails.map((score, index) => (
               <li key={index}>

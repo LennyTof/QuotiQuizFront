@@ -120,7 +120,6 @@ const QuizPage = () => {
         <div>
           <button onClick={handleAnswerClick} className="btn btn-info">Valider</button>
         </div>
-        <p>Tu as correctement répondu à {rightAnswer} question{rightAnswer > 1 && "s"}</p>
         <h2>{announcement}</h2>
         <div className="rectangles container h-25 ">
           {askedQuestions.map((question, index) => (
