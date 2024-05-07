@@ -106,9 +106,9 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="quiz-page">
+    <>
       <div className="quiz">
-        <h1>Question {askedQuestions.length}</h1>
+        <h1>Question {askedQuestions.length} sur 5</h1>
         <h2>{quiz.question}</h2>
         <ul className="answer">
           {quiz.options.map((answer, index) => (
@@ -118,7 +118,7 @@ const QuizPage = () => {
           ))}
         </ul>
         <div>
-          <button onClick={handleAnswerClick} className="btn btn-info">Valider</button>
+          <button onClick={handleAnswerClick} className="validation-button">Valider</button>
         </div>
         <h2>{announcement}</h2>
         <div className="rectangles container h-25 ">
@@ -127,7 +127,7 @@ const QuizPage = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

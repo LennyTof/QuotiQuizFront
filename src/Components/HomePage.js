@@ -1,5 +1,6 @@
 import React from 'react';
 import { Slide } from 'react-slideshow-image';
+import { Link } from 'react-router-dom';
 import 'react-slideshow-image/dist/styles.css';
 import '../style/homepage.css';
 import image1 from '../img/image1.png';
@@ -10,7 +11,7 @@ import image3 from '../img/image3.png';
 const slideImages = [
   {
     url: `${image1}`,
-    caption: "C'est un site de quiz culture générale"
+    caption: "Réponds aux questions"
   },
   {
     url: `${image2}`,
@@ -26,6 +27,9 @@ const HomePage = () => {
 
   return (
     <>
+      <Link to="/quiz-page" className='btn btn-success m-1'>Lancer une session Quiz</Link>
+      <br/>
+      <br/>
       <div className={`slide-containter`}>
         <Slide>
          {slideImages.map((slideImage, index)=> (
@@ -37,7 +41,7 @@ const HomePage = () => {
             </div>
           ))}
         </Slide>
-        <h3 className='mt-3'>N'hésite pas à t'inscrire avant si tu veux avoir accès à ton historique détaillé !</h3>
+
       </div>
     </>
   )

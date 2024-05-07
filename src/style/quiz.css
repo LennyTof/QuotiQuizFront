@@ -1,16 +1,11 @@
-
-.quiz-page {
-  text-align: center;
-  margin: 10px;
-}
-
-.profil-button {
-  text-align: left;
-}
-
 .quiz {
   margin-top: 20px;
-
+  font-family: 'Arial', sans-serif;
+  background: #cfcfcf;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  margin: auto;
 }
 
 .answer {
@@ -18,10 +13,44 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 20px;
+  gap: 10px
 }
 
 .answer li {
-  margin: 5px;
+  flex: 1 1 48%;
+}
+
+.answer button {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%
+}
+
+.answer button:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
+}
+
+.validation-button {
+  color: #fff;
+  background-color: #21aba2;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 15px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.validation-button:hover {
+  background-color: #138496;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .rectangles {
@@ -32,10 +61,11 @@
 }
 
 .rectangles div {
-  background-color: #56756e;
+  background-color: #cfcfcf;
   width: 40px;
   height: 15px;
   border: 1px solid #56756e;
+  border-radius: 5px;
 }
 
 .rectangles .correct {
@@ -46,4 +76,11 @@
 .rectangles .false {
   background-color: red;
   border: 1px solid black;
+}
+
+@media (min-width: 600px) {
+  .quiz {
+    max-width: 600px;
+    margin: 20px auto;
+  }
 }

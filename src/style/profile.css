@@ -22,10 +22,12 @@
   padding: 2px;
   padding-left: 15px;
   padding-right: 15px;
+  transition: transform 0.2s
 }
 
 .personnal-score:hover {
   background-color: rgb(94, 94, 207);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -56,5 +58,5 @@
 @media (max-width: 1000px) {
   .score-and-details {
     display: grid;
-}
+  }
 }
