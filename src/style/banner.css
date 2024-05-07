@@ -1,10 +1,23 @@
-Sidebar {
-  background-color: red;
-}
-
 .banner {
   background-color: #141452;
   color: white;
+}
+
+.sidebar {
+  position: fixed;
+  top: 10;
+  left: 0;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  box-shadow: -2px 0 2px rgba(0,0,0,0.5);
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-open {
+  transform: translateX(0);
 }
 
 .space-between {
@@ -12,11 +25,7 @@ Sidebar {
   justify-content: space-between;
 }
 
-.title {
+.greeting-center {
   text-align: center;
-  padding: 10px;
-}
-
-.link {
-  text-align: center;
+  padding: 5px;
 }
