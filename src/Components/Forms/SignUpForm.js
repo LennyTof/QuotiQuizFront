@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import axios from 'axios';
+import axios from '../axiosConfig';
 import '../../style/connexionForm.css'
 
 const SignUpForm = () => {
@@ -11,7 +11,7 @@ const SignUpForm = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/user/signup', {
+      const response = await axios.post('/user/signup', {
         email,
         username,
         password,

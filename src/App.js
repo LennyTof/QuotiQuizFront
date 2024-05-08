@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Banner from "./Components/Banner";
 import HomePage from "./Components/HomePage";
 import QuizComponent from "./Components/Quizs/QuizComponent";
 import QuizForm from "./Components/Forms/QuizForm";
@@ -12,9 +13,9 @@ import SignUpForm from "./Components/Forms/SignUpForm";
 import ProfilePage from "./Components/Users/ProfilePage";
 import ProfileInfo from "./Components/Users/ProfileInfo";
 import Leaderboard from "./Components/Scores/Leaderboard";
-import Banner from "./Components/Banner";
 import NewQuizList from "./Components/Quizs/NewQuizList";
 import PasswordForgot from "./Components/Forms/PasswordForgot";
+import PasswordReset from "./Components/Forms/PasswordReset";
 import { LoginProvider, useLogin } from './Components/Users/LoginContext';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/asked-question" element={<NewQuizList />} />
           <Route path="/password-forgot" element={<PasswordForgot />} />
+          <Route path="/password-forgot-reset" element={<PasswordReset/>} />
         </Routes>
       </div>
       </LoginProvider>

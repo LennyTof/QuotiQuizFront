@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import axios from 'axios';
+import axios from '../axiosConfig';
 import '../../style/infoForm.css';
 
 const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
@@ -11,7 +11,7 @@ const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:3000/api/user/update/${userId}`, {
+      const response = await axios.put(`/user/update/${userId}`, {
         email,
         username,
         oldPassword,
@@ -46,7 +46,7 @@ const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
         <label htmlFor="oldPassword">Ancien mot de passe :</label>
         <input
           type='password'
-          placeholder='Tapez votre ancien mot de passe'
+          placeholder='Laissez vide si vous gardez votre mot de passe'
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
         />

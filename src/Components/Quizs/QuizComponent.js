@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import  axios  from "axios";
+import  axios  from "../axiosConfig";
 import { Link } from 'react-router-dom';
 import isAdmin  from '../Users/IsAdmin';
 
@@ -11,7 +11,7 @@ const QuizComponent = () => {
   }, []);
 
   const fetchQuizList = () => {
-    axios.get('http://localhost:3000/api/quiz')
+    axios.get('/quiz')
     .then(response => {setQuizList(response.data)})
     .catch(error => {console.error("Impossible de récupérer les Questions :", error)});
   };
@@ -25,7 +25,7 @@ const QuizComponent = () => {
   };
 
   const handleDelete = (quizId) => {
-    axios.delete(`http://localhost:3000/api/quiz/${quizId}`)
+    axios.delete(`/quiz/${quizId}`)
       .then(() => {
         alert('Quiz supprimé avec succès!');
         fetchQuizList();

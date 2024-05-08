@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import '../../style/quiz.css';
 
@@ -30,7 +30,7 @@ const QuizPage = () => {
   // récupére une question aléatoire depuis la base de donnée et la stock le temps du quiz
   const fetchRandomQuiz = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/quiz/random');
+      const response = await axios.get('/quiz/random');
 
       // vérifie que la question n'a pas déjà été posée
       if(askedQuestions.includes(response.data._id)) {
@@ -77,7 +77,7 @@ const QuizPage = () => {
     const token = localStorage.getItem('token');
     try {
       console.log(quizDetails)
-      const response = await axios.post('http://localhost:3000/api/user/score',
+      const response = await axios.post('/user/score',
       {
          score: totalScore,
          quizDetails: quizDetails

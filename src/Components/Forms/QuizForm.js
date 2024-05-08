@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from 'axios';
+import axios from '../axiosConfig';
 import '../../style/quizForm.css'
 
 const QuizForm = ({ onQuizSubmit}) => {
@@ -36,7 +36,7 @@ const QuizForm = ({ onQuizSubmit}) => {
       correctAnswer: option4.trim(),
     };
 
-    axios.post('http://localhost:3000/api/quiz/asked', newQuiz)
+    axios.post('/quiz/asked', newQuiz)
       .then(response => {
         alert("Quiz proposé avec succès !");
         setQuestion('');

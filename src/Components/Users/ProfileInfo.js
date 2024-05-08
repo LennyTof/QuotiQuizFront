@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../axiosConfig';
 import { useEffect, useState } from 'react';
 import InfoForm from '../Forms/InfoForm';
 
@@ -9,7 +9,7 @@ const ProfileInfo = () => {
 
   // récupére les informations de l'utilisateur connecté
   useEffect(() => {
-    axios.get('http://localhost:3000/api/user/profil', {
+    axios.get('user/profil', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axiosConfig";
 import { useEffect, useState, useRef } from "react";
 import moment from "moment-timezone";
 import ScoreDisplay from "./ScoreDisplay";
@@ -26,7 +26,7 @@ const Leaderboard = () => {
     // récupére les scores globals du jour
     const fetchDailyScores = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/user/daily-leaderboard');
+        const response = await axios.get('/user/daily-leaderboard');
         setScores(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des scores journaliers:', error);

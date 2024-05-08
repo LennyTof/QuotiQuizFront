@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import axios from 'axios';
+import axios from '../axiosConfig';
 import isAdmin from '../Users/IsAdmin';
 
 // Page recevant les questions proposés par les utilisateurs, ajout de méthode pour les valider ou supprimer
@@ -12,13 +12,13 @@ const NewQuizList = () => {
   }, []);
 
   const fetchQuizList = () => {
-    axios.get('http://localhost:3000/api/quiz/asked')
+    axios.get('/quiz/asked')
     .then(response => {setQuizList(response.data)})
     .catch(error => {console.error("Impossible de récupérer les Questions :", error)});
   };
 
   const handleDelete = (quizId) => {
-    axios.delete(`http://localhost:3000/api/quiz/asked/${quizId}`)
+    axios.delete(`/quiz/asked/${quizId}`)
       .then(() => {
         alert('Quiz supprimé avec succès!');
         fetchQuizList();
@@ -30,7 +30,7 @@ const NewQuizList = () => {
   };
 
   const handleAccept = (quiz) => {
-    axios.post(`http://localhost:3000/api/quiz`, quiz)
+    axios.post(`/quiz`, quiz)
       .then(() => {
         alert('Quiz ajouté dans la base de données');
         handleDelete(quiz._id);
