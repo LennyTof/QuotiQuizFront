@@ -18,7 +18,7 @@ const LogoutButton = ({ onLogout, className }) => {
   const buttonClass = className || 'btn btn-success mb-1';
 
   return (
-    <button onClick={handleClick} className={buttonClass} >Se déconnecter</button>
+    <button onClick={handleClick} className={buttonClass} aria-label="Se déconnecter">Se déconnecter</button>
   );
 };
 

@@ -13,7 +13,7 @@ const QuizPage = () => {
   const [answeredQuestions, setAnswerQuestions] = useState([]);
   const [announcement, setAnnoucement] = useState('');
   const [quizDetails, setQuizDetails] = useState([]);
-  const { isLoggedIn, updateLoginStatus } = useLogin();
+  const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -76,6 +76,10 @@ const QuizPage = () => {
 
   // créer un score basé sur les réponses du  quiz et le lie à l'utilisateur
   const handleQuizCompletion = async (totalScore, quizDetails) => {
+    if (!isLoggedIn) {
+      return;
+    }
+    
     const token = localStorage.getItem('token');
     try {
       console.log(quizDetails)

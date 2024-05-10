@@ -6,6 +6,7 @@ import isAdmin from '../Users/IsAdmin';
 
 const NewQuizList = () => {
   const [quizList, setQuizList] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchQuizList()
@@ -13,8 +14,14 @@ const NewQuizList = () => {
 
   const fetchQuizList = () => {
     axios.get('/quiz/asked')
-    .then(response => {setQuizList(response.data)})
-    .catch(error => {console.error("Impossible de récupérer les Questions :", error)});
+    .then(response => {
+      setQuizList(response.data);
+      setError('');
+    })
+    .catch(error => {
+      console.error("Impossible de récupérer les Questions :", error);
+      setError("Impossible de charger les questions. Réessaye à nouveau.")
+    });
   };
 
   const handleDelete = (quizId) => {
@@ -41,12 +48,12 @@ const NewQuizList = () => {
       });
   };
 
-  // if (localStorage.roles !== 'admin') {
-  //   return <h3>Vous n'avez pas les droits pour accéder à cette page</h3>
-  // }
-
   if (!isAdmin()) {
     return <h2>Vous n'avez pas les droits pour accéder à cette page</h2>
+  }
+
+  if (error) {
+    return <p>{error}</p>; 
   }
 
 
@@ -57,7 +64,6 @@ const NewQuizList = () => {
         {quizList.map((quiz) => (
           <li key={quiz._id}>
             <div>
-              {console.log(quiz)}
               <h3>{quiz.question}</h3>
               <ul>
                 {quiz.options.map((answer, index) => (

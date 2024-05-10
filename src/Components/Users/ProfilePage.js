@@ -4,7 +4,6 @@ import moment from 'moment-timezone';
 import { useLogin } from './LoginContext';
 import InfoForm from '../Forms/InfoForm';
 import ScoreDisplay from '../Scores/ScoreDisplay';
-
 import '../../style/profile.css';
 
 

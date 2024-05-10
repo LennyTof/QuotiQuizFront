@@ -1,10 +1,16 @@
 import { useState, useEffect} from 'react';
 import  axios  from "../axiosConfig";
-import { Link } from 'react-router-dom';
 import isAdmin  from '../Users/IsAdmin';
 
 const QuizComponent = () => {
   const [quizList, setQuizList] = useState([]);
+
+  const shuffle = (array) => {
+    for (let i = array.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
 
   useEffect(() => {
     fetchQuizList()
@@ -12,7 +18,11 @@ const QuizComponent = () => {
 
   const fetchQuizList = () => {
     axios.get('/quiz')
-    .then(response => {setQuizList(response.data)})
+    .then(response => {
+      const quizs = response.data;
+      quizs.forEach(quiz => shuffle(quiz.options));
+      setQuizList(quizs);
+    })
     .catch(error => {console.error("Impossible de récupérer les Questions :", error)});
   };
 
@@ -36,12 +46,6 @@ const QuizComponent = () => {
       });
   };
 
-  const shuffle = (array) => {
-    for (let i = array.length -1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  };
 
   if (!isAdmin()) {
     return <h2>Vous n'avez pas les droits pour accéder à cette page</h2>
@@ -55,7 +59,6 @@ const QuizComponent = () => {
         <ul style={{listStyleType: "none"}}>
           {quizList.map(quiz => (
             <li key={quiz._id}>
-              {shuffle(quiz.options)}
               <div>
                 <h3>{quiz.question}</h3>
                 <ul style={{listStyleType: "none"}}>

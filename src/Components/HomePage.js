@@ -11,15 +11,18 @@ import image3 from '../img/image3.png';
 const slideImages = [
   {
     url: `${image1}`,
-    caption: "Réponds aux questions"
+    caption: "Réponds aux questions",
+    alt: "Réponds aux questions"
   },
   {
     url: `${image2}`,
-    caption: 'Suis tes scores'
+    caption: 'Suis tes scores',
+    alt: "Suis tes scores"
   },
   {
     url: `${image3}`,
-    caption: "Compare les avec d'autres joueurs !"
+    caption: "Compare les avec d'autres joueurs !",
+    alt: "Compare les avec d'autres joueurs !"
   },
 ];
 

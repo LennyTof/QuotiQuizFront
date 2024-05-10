@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useLogin } from '../Users/LoginContext';
-
 import '../../style/result.css';
 
 const QuizResult = () => {
@@ -13,10 +12,11 @@ const QuizResult = () => {
   let numberOfCorrectAnswer = location.state.totalScore ?? 0;
 
   const questionPlural = numberOfCorrectAnswer >= 2 ? "bonnes réponses" : "bonne réponse";
+  
   return (
     <>
       <h1 className="mt-3">Quiz terminé !</h1>
-      <h4>Tu peux accéder à l'historique de tes quiz dans ton profil et voir les résultats des autres via le menu !</h4>
+      { isLoggedIn && <h4>Tu peux accéder à l'historique de tes quiz dans ton profil et voir les résultats des autres via le menu !</h4> }
       <div className="result-display">
         <h3>
           Tu as obtenu {numberOfCorrectAnswer} {questionPlural} sur 5 !
