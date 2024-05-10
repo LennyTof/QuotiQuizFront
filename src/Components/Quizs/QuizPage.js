@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from '../Users/LoginContext';
 import '../../style/quiz.css';
 
 const QuizPage = () => {
@@ -12,6 +13,7 @@ const QuizPage = () => {
   const [answeredQuestions, setAnswerQuestions] = useState([]);
   const [announcement, setAnnoucement] = useState('');
   const [quizDetails, setQuizDetails] = useState([]);
+  const { isLoggedIn, updateLoginStatus } = useLogin();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,6 +109,7 @@ const QuizPage = () => {
 
   return (
     <>
+      { !isLoggedIn && <h3>Connecte toi avant si tu veux enregistrer ton score</h3>}
       <div className="quiz">
         <h1>Question {askedQuestions.length} sur 5</h1>
         <h2>{quiz.question}</h2>

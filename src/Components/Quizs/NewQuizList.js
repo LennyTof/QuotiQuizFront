@@ -57,6 +57,7 @@ const NewQuizList = () => {
         {quizList.map((quiz) => (
           <li key={quiz._id}>
             <div>
+              {console.log(quiz)}
               <h3>{quiz.question}</h3>
               <ul>
                 {quiz.options.map((answer, index) => (
