@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import "../../style/scoredisplay.css";
 
 const ScoreDisplay = ({quizDetails, onClose, showAnswers}) => {
@@ -21,5 +22,15 @@ const ScoreDisplay = ({quizDetails, onClose, showAnswers}) => {
     </div>
   )
 }
+
+ScoreDisplay.propTypes = {
+  quizDetails: PropTypes.arrayOf(PropTypes.shape({
+    question: PropTypes.string.isRequired,
+    userAnswer: PropTypes.string.isRequired,
+    correctAnswer: PropTypes.string.isRequired,
+  })).isRequired,
+  onClose: PropTypes.func.isRequired,
+  showAnswers: PropTypes.bool.isRequired
+};
 
 export default ScoreDisplay;
