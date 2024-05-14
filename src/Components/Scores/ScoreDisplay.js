@@ -2,6 +2,9 @@ import "../../style/scoredisplay.css";
 
 const ScoreDisplay = ({quizDetails, onClose, showAnswers}) => {
 
+  const answerClass = (quiz) => quiz.userAnswer === quiz.correctAnswer ? "green score-answer" : "red score-answer";
+  const answerText = (quiz) => showAnswers ? quiz.userAnswer : (quiz.userAnswer === quiz.correctAnswer ? "Bonne réponse" : "Mauvaise réponse");
+
   return (
     <div>
       <ul className="score-display">
@@ -9,11 +12,7 @@ const ScoreDisplay = ({quizDetails, onClose, showAnswers}) => {
           <li key={index}>
             <div>
               <h5>{quiz.question}</h5>
-              {showAnswers ? (
-                <span className={quiz.userAnswer === quiz.correctAnswer ? "green score-answer" : "red score-answer"}>{quiz.userAnswer}</span>
-              ) : (
-                <span className={quiz.userAnswer === quiz.correctAnswer ? "green score-answer" : "red score-answer"}>{quiz.userAnswer === quiz.correctAnswer ? "Bonne réponse" : "Mauvaise réponse"}</span>
-              )}
+              <span className={answerClass(quiz)}>{answerText(quiz)}</span>
             </div>
           </li>
           ))}

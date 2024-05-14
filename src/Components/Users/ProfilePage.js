@@ -1,11 +1,10 @@
-import axios from 'axios';
+import axios from '../axiosConfig';
 import { useEffect, useState, useRef } from 'react';
 import moment from 'moment-timezone';
 import { useLogin } from './LoginContext';
 import InfoForm from '../Forms/InfoForm';
 import ScoreDisplay from '../Scores/ScoreDisplay';
 import '../../style/profile.css';
-
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -21,7 +20,7 @@ const ProfilePage = () => {
 
   // récupére les scores obtenus par l'utilisateur connecté
   useEffect(() => {
-    axios.get('http://localhost:3000/api/user/profil', {
+    axios.get('/user/profil', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
