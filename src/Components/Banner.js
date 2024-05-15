@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LogoutButton from './Buttons/LogoutButton';
 import { Link } from 'react-router-dom';
 import { useLogin } from './Users/LoginContext';
@@ -11,6 +11,20 @@ const Banner = () => {
   const { isLoggedIn, updateLoginStatus } = useLogin();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isAdmin = useIsAdmin()
+
+  useEffect(() => {
+
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem('token');
+      updateLoginStatus(!!token);
+    }
+
+    window.addEventListener('storage', checkLoginStatus)
+
+    return () => {
+      window.removeEventListener('storage', checkLoginStatus)
+    }
+  }, [updateLoginStatus]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
