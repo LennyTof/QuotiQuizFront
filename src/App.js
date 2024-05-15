@@ -1,22 +1,21 @@
-import { useState, useEffect } from "react";
-import axios from 'axios';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import { LoginProvider } from './Components/Users/LoginContext';
 import Banner from "./Components/Banner";
-import HomePage from "./Components/HomePage";
-import QuizComponent from "./Components/Quizs/QuizComponent";
-import QuizForm from "./Components/Forms/QuizForm";
-import QuizPage from "./Components/Quizs/QuizPage";
-import QuizResult from "./Components/Quizs/QuizResult";
-import LoginForm from "./Components/Forms/LoginForm";
-import SignUpForm from "./Components/Forms/SignUpForm";
-import ProfilePage from "./Components/Users/ProfilePage";
-import ProfileInfo from "./Components/Users/ProfileInfo";
-import Leaderboard from "./Components/Scores/Leaderboard";
-import NewQuizList from "./Components/Quizs/NewQuizList";
-import PasswordForgot from "./Components/Forms/PasswordForgot";
-import PasswordReset from "./Components/Forms/PasswordReset";
-import { LoginProvider, useLogin } from './Components/Users/LoginContext';
+import './App.css';
+const HomePage = lazy(() => import("./Components/HomePage"));
+const QuizComponent = lazy(() => import("./Components/Quizs/QuizComponent"));
+const QuizForm = lazy(() => import("./Components/Forms/QuizForm"));
+const QuizPage = lazy(() => import("./Components/Quizs/QuizPage"));
+const QuizResult = lazy(() => import("./Components/Quizs/QuizResult"));
+const LoginForm = lazy(() => import("./Components/Forms/LoginForm"));
+const SignUpForm = lazy(() => import("./Components/Forms/SignUpForm"));
+const ProfilePage = lazy(() => import("./Components/Users/ProfilePage"));
+const ProfileInfo = lazy(() => import("./Components/Users/ProfileInfo"));
+const Leaderboard = lazy(() => import("./Components/Scores/Leaderboard"));
+const NewQuizList = lazy(() => import("./Components/Quizs/NewQuizList"));
+const PasswordForgot = lazy(() => import("./Components/Forms/PasswordForgot"));
+const PasswordReset = lazy(() => import("./Components/Forms/PasswordReset"));
 
 function App() {
 
@@ -25,6 +24,7 @@ function App() {
       <LoginProvider>
       <Banner />
       <div className="App">
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/component" element={<QuizComponent/>} />
@@ -44,6 +44,7 @@ function App() {
           <Route path="/password-forgot" element={<PasswordForgot />} />
           <Route path="/password-forgot-reset" element={<PasswordReset/>} />
         </Routes>
+      </Suspense>
       </div>
       </LoginProvider>
     </>
