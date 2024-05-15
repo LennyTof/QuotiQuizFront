@@ -1,6 +1,8 @@
 .banner {
   background-color: #141452;
   color: white;
+  padding: 10px 10px;
+  font-family: 'Arial', sans-serif;
 }
 
 .sidebar {
@@ -9,7 +11,7 @@
   left: 0;
   width: 200px;
   height: auto;
-  padding: 10px;
+  padding: 20px;
   box-shadow: -2px 0 2px rgba(0,0,0,0.5);
   z-index: 1000;
   transform: translateX(-100%);
