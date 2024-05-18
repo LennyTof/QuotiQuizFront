@@ -10,9 +10,8 @@ const Banner = () => {
   // vérifie si l'utilisateur est connecté pour afficher les bons boutons
   const { isLoggedIn, updateLoginStatus } = useLogin();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const isAdmin = useIsAdmin()
+  const isAdmin = useIsAdmin();
 
-  console.log(localStorage)
 
   useEffect(() => {
 
