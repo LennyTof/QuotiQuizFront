@@ -79,7 +79,7 @@ const QuizPage = () => {
     if (!isLoggedIn) {
       return;
     }
-    
+
     const token = localStorage.getItem('token');
     try {
       console.log(quizDetails)
@@ -113,7 +113,7 @@ const QuizPage = () => {
 
   return (
     <>
-      { !isLoggedIn && <h3>Connecte toi avant si tu veux enregistrer ton score</h3>}
+      { !isLoggedIn && <h3>Connecte toi avant si tu veux enregistrer ton score !</h3>}
       <div className="quiz">
         <h1>Question {askedQuestions.length} sur 5</h1>
         <h2>{quiz.question}</h2>

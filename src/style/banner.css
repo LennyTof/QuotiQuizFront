@@ -25,6 +25,12 @@
 .space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.banner-title-container {
+  display: flex;
+  justify-content: center;
 }
 
 .greeting-center {

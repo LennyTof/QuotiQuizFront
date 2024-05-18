@@ -46,6 +46,8 @@ const QuizComponent = () => {
       });
   };
 
+  const size = quizList.length
+
 
   if (!isAdmin()) {
     return <h2>Vous n'avez pas les droits pour accéder à cette page</h2>
@@ -55,7 +57,7 @@ const QuizComponent = () => {
     <div>
       <h1>Cette page ne sera pas affichée pour les utilisateurs</h1>
       <div className="App">
-        <h2>Liste des Questions</h2>
+        <h2>Liste des Questions ({size})</h2>
         <ul style={{listStyleType: "none"}}>
           {quizList.map(quiz => (
             <li key={quiz._id}>

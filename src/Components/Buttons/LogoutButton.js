@@ -9,6 +9,7 @@ const LogoutButton = ({ onLogout, className }) => {
   const handleClick = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('roles');
     axios.defaults.headers.common['Authorization'] = null;
 
     onLogout();

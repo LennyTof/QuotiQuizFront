@@ -18,8 +18,12 @@ const LoginForm = () => {
         email,
         password,
       });
+
+      const expirationTime = new Date().getTime() + 24 * 60 * 60 * 1000;
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
+      localStorage.setItem('expirationTime', expirationTime);
+      
       updateLoginStatus(true);
       navigate('/profil');
     } catch (error) {

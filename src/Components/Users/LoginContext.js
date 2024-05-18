@@ -9,12 +9,28 @@ export const LoginProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
+    const expirationTime = localStorage.getItem('expirationTime');
+    const currentTime = new Date().getTime();
+
+    if (token && expirationTime && currentTime < parseInt(expirationTime)) {
+      setIsLoggedIn(true);
+    } else {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      localStorage.removeItem('roles');
+      localStorage.removeItem('expirationTime');
+      setIsLoggedIn(false);
+    }
   }, []);
 
   const updateLoginStatus = (loggedIn) => {
     setIsLoggedIn(loggedIn);
-    if (!loggedIn) localStorage.removeItem('token');
+    if (!loggedIn) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      localStorage.removeItem('roles');
+      localStorage.removeItem('expirationTime');
+    }
   }
 
   return (

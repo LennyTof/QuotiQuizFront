@@ -12,6 +12,8 @@ const Banner = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isAdmin = useIsAdmin()
 
+  console.log(localStorage)
+
   useEffect(() => {
 
     const checkLoginStatus = () => {
@@ -32,16 +34,22 @@ const Banner = () => {
 
   return (
     <div className="banner mb-3">
-      <div className='space-between p-1'>
-        {isLoggedIn && <Link to="/profil" className='btn btn-success m-1'>Profil</Link>}
-        <Link to="/" style={{ textDecoration:'none', color:'white'}}><h1>QuotiQuiz</h1></Link>
-        {isLoggedIn ? <LogoutButton className="btn btn-success m-1" onLogout={() => updateLoginStatus(false)}/> :  <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
-      </div>
+        <div className="banner-title-container">
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            <h1>QuotiQuiz</h1>
+          </Link>
+        </div>
       <div className='greeting-center'>
         <Link to="/" style={{ textDecoration:'none', color:'white'}}><h3>Le site de quiz quotidien</h3></Link>
         {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
       </div>
-      <button className='btn btn-success' onClick={toggleSidebar}>{isSidebarOpen ? 'Fermer Menu' : 'Ouvrir Menu'}</button>
+      <div className='space-between'>
+        <button className='btn btn-success' onClick={toggleSidebar}>{isSidebarOpen ? 'Fermer Menu' : 'Ouvrir Menu'}</button>
+        <div>
+          {isLoggedIn && <Link to="/profil" className='btn btn-success m-1'>Profil</Link>}
+          {isLoggedIn ? <LogoutButton className="btn btn-success m-1" onLogout={() => updateLoginStatus(false)}/> :  <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
+        </div>
+      </div>
       <div className={`sidebar ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         {isAdmin && <Link to="/component" className='btn btn-success mb-1 me-1'>Accéder aux questions</Link>}
         {isAdmin && <Link to="/asked-question" className='btn btn-success mb-1 me-1'>Accéder aux questions proposées</Link>}

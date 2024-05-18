@@ -60,19 +60,25 @@ const ProfilePage = () => {
             <div></div>
           ) : (
             <>
-              <h3>N'hésite pas à cliquer sur tes scores</h3>
-              <div className='score-and-details'>
-                <ul className='score-list'>
-                  {userProfile.scores.map((score, index) => (
-                    <li key={index} className='personnal-score' onClick={() => handleShowDetails(score)}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
-                  ))}
-                </ul>
-                <div ref={scoreDisplayRef}>
-                  {showScoreModal && activeScoreDetails && (
-                    <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} showAnswers={true} />
-                  )}
-                </div>
-              </div>
+              {userProfile.scores === 0 ? (
+                <h2>Tu n'as pas encore fait de quiz</h2>
+              ) : (
+                <>
+                  <h3>N'hésite pas à cliquer sur tes scores</h3>
+                  <div className='score-and-details'>
+                    <ul className='score-list'>
+                      {userProfile.scores.map((score, index) => (
+                        <li key={index} className='personnal-score' onClick={() => handleShowDetails(score)}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
+                      ))}
+                    </ul>
+                    <div ref={scoreDisplayRef}>
+                      {showScoreModal && activeScoreDetails && (
+                        <ScoreDisplay quizDetails={activeScoreDetails} onClose={() => setShowScoreModal(false)} showAnswers={true} />
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
             </>
           )}
           </div>
