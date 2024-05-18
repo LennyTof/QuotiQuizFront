@@ -64,7 +64,8 @@ const ProfilePage = () => {
                 <h2>Tu n'as pas encore fait de quiz</h2>
               ) : (
                 <>
-                  <h3>N'hésite pas à cliquer sur tes scores</h3>
+                  <h3>Tes 30 derniers résultats</h3>
+                  <h5>N'hésite pas à cliquer dessus</h5>
                   <div className='score-and-details'>
                     <ul className='score-list'>
                       {userProfile.scores.map((score, index) => (
