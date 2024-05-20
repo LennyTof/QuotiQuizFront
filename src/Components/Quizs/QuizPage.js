@@ -16,6 +16,14 @@ const QuizPage = () => {
   const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
 
+  //méthode utilisée pour mélanger les réponses des questions
+  const shuffle = (array) => {
+    for (let i = array.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
   useEffect(() => {
     fetchRandomQuiz();
   }, []);
@@ -82,7 +90,6 @@ const QuizPage = () => {
 
     const token = localStorage.getItem('token');
     try {
-      console.log(quizDetails)
       const response = await axios.post('/user/score',
       {
          score: totalScore,
@@ -97,14 +104,6 @@ const QuizPage = () => {
     } catch (error) {
       console.error("Erreur lors de l'enregistrement du score:", error)
 ;    };
-  };
-
-  //méthode utilisée pour mélanger les questions
-  const shuffle = (array) => {
-    for (let i = array.length -1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
   };
 
   if (!quiz) {
