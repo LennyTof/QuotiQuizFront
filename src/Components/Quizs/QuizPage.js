@@ -32,7 +32,7 @@ const QuizPage = () => {
   // récupére une question aléatoire depuis la base de donnée et la stock le temps du quiz
   const fetchRandomQuiz = async () => {
     try {
-      const response = await axios.get('/quiz/random');
+      const response = await axios.get('/quiz/daily');
 
       // vérifie que la question n'a pas déjà été posée
       if(askedQuestions.includes(response.data._id)) {
