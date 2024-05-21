@@ -13,6 +13,7 @@ const QuizPage = () => {
   const [answeredQuestions, setAnswerQuestions] = useState([]);
   const [announcement, setAnnoucement] = useState('');
   const [quizDetails, setQuizDetails] = useState([]);
+  const [quizCompletedStatus, setQuizCompletedStatus] = useState(false);
   const { isLoggedIn } = useLogin();
   const navigate = useNavigate();
 
@@ -23,6 +24,31 @@ const QuizPage = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
   };
+
+  useEffect(() => {
+    const checkQuizCompletion = async () => {
+      if (!isLoggedIn) {
+        return;
+      }
+
+      const token = localStorage.getItem('token');
+      try {
+        const response = await axios.get('/user/complete-status', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        setQuizCompletedStatus(response.data.quizCompleted);
+        console.log(quizCompletedStatus)
+      } catch (error) {
+        console.error("Erreur lors de la vérification de l'état du quiz:", error);
+      }
+    };
+
+    checkQuizCompletion();
+  }, [isLoggedIn]);
 
   useEffect(() => {
     fetchRandomQuiz();
@@ -90,17 +116,25 @@ const QuizPage = () => {
 
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.post('/user/score',
-      {
-         score: totalScore,
-         quizDetails: quizDetails
-      },
-      {
+      await axios.post('/user/score',
+        {
+          score: totalScore,
+          quizDetails: quizDetails
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+      });
+
+      await axios.post('/user/complete-quiz', {}, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
+
     } catch (error) {
       console.error("Erreur lors de l'enregistrement du score:", error)
 ;    };
@@ -108,6 +142,10 @@ const QuizPage = () => {
 
   if (!quiz) {
     return <p>Chargement en cours...</p>
+  }
+
+  if (quizCompletedStatus) {
+    return <h2>Vous avez déjà répondu au quiz du jour.</h2>
   }
 
   return (
