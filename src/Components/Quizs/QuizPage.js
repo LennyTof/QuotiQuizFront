@@ -41,7 +41,6 @@ const QuizPage = () => {
         });
 
         setQuizCompletedStatus(response.data.quizCompleted);
-        console.log(quizCompletedStatus)
       } catch (error) {
         console.error("Erreur lors de la vérification de l'état du quiz:", error);
       }
