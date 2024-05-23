@@ -23,9 +23,9 @@ const LoginForm = () => {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
       localStorage.setItem('expirationTime', expirationTime);
-      
+
       updateLoginStatus(true);
-      navigate('/profil');
+      navigate('/quiz-page');
     } catch (error) {
       alert('Email ou mot de passe incorrect');
     }

@@ -17,7 +17,7 @@ const SignUpForm = () => {
         password,
         passwordConfirmation
       });
-      alert("Ton compte a correctement été créé");
+      alert("Ton compte a correctement été créé, tu peux désormer te connecter");
       setEmail('');
       setUsername('');
       setPassword('');
