@@ -1,60 +1,51 @@
+.divStyle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+  border-width: 2px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px black;
+}
+
 @media (min-width: 800px) {
   .divStyle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-size: cover;
     height: 50vh;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
-    border: solid;
-    border-radius: 20px;
   }
 }
 
 @media (max-width: 800px) {
   .divStyle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-size: cover;
     height: 50vh;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     background-repeat: no-repeat;
-    border: solid;
-    border-radius: 20px;
   }
 }
 
 @media (max-width: 500px) {
   .divStyle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-size: contain;
     height: 30vh;
     width: 100%;
-    border: solid;
-    border-radius: 20px;
-  }
-  .panStyle {
-    padding: 20px;
-    background: #56756e;
-    color: black;
   }
 }
 
 .panStyle {
-  padding: 20px;
-  background: #56756e;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 20px;
+  background: white;
   color: #000000;
+  border-radius: 10px;
 }
 
 .pictureNumber {
