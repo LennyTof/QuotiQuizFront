@@ -21,8 +21,8 @@ const slideImages = [
   },
   {
     url: `${image3}`,
-    caption: "Compare les avec d'autres joueurs !",
-    alt: "Compare les avec d'autres joueurs !"
+    caption: "Compare les avec d'autres joueurs",
+    alt: "Compare les avec d'autres joueurs"
   },
 ];
 
@@ -38,10 +38,10 @@ const HomePage = () => {
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div key={index}>
-              <div className='panStyle'><h3>{slideImage.caption}</h3></div>
               <div className='divStyle'style={{ 'backgroundImage': `url(${slideImage.url})` }}>
                 <span className='pictureNumber'>{index + 1}</span>
               </div>
+              <div className='panStyle'><h3>{slideImage.caption}</h3></div>
             </div>
           ))}
         </Slide>
