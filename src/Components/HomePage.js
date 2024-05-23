@@ -30,6 +30,7 @@ const HomePage = () => {
 
   return (
     <>
+      <h2>Le site de quiz quotidien !</h2>
       <Link to="/quiz-page" className='btn btn-success m-1'>Lancer une session Quiz</Link>
       <br/>
       <br/>

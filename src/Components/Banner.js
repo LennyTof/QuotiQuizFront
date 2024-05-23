@@ -39,7 +39,6 @@ const Banner = () => {
           </Link>
         </div>
       <div className='greeting-center'>
-        <Link to="/" style={{ textDecoration:'none', color:'white'}}><h3>Le site de quiz quotidien</h3></Link>
         {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
       </div>
       <div className='space-between'>
