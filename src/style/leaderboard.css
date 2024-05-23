@@ -4,6 +4,7 @@
 
 .score-list {
   list-style-type: none;
+  max-height: 60vh;
 }
 
 .score:hover {
