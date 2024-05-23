@@ -68,7 +68,7 @@ const ProfilePage = () => {
                   <h5>N'hésite pas à cliquer dessus</h5>
                   <div className='score-and-details'>
                     <ul className='score-list'>
-                      {userProfile.scores.map((score, index) => (
+                      {userProfile.scores.slice(-30).reverse().map((score, index) => (
                         <li key={index} className='personnal-score' onClick={() => handleShowDetails(score)}>Tu as obtenu {score.value} points sur 5 le {formatDate(score.date)}</li>
                       ))}
                     </ul>
