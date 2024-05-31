@@ -10,6 +10,11 @@ const SignUpForm = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    if (password !== passwordConfirmation) {
+      return alert("Les mots de passes sont différents !")
+    }
+
     try {
       const response = await axios.post('/user/signup', {
         email,
@@ -24,7 +29,7 @@ const SignUpForm = () => {
       setPasswordConfirmation('');
     } catch (error) {
       console.error('Erreur:', error);
-      alert("Les mot de passe sont différents")
+      alert("Une erreur est survenue")
     }
   };
 

@@ -53,7 +53,7 @@ const NewQuizList = () => {
   }
 
   if (error) {
-    return <p>{error}</p>; 
+    return <p>{error}</p>;
   }
 
 
@@ -67,7 +67,7 @@ const NewQuizList = () => {
               <h3>{quiz.question}</h3>
               <ul>
                 {quiz.options.map((answer, index) => (
-                  <li key={index}>{answer}</li>
+                  <li key={index} className={answer === quiz.correctAnswer ? 'text-bg-success p-3' : ''}>{answer}</li>
                 ))}
               </ul>
             <button className="btn btn-danger" onClick={() => handleDelete(quiz._id)}>Supprimer</button>

@@ -23,12 +23,14 @@ const QuizForm = ({ onQuizSubmit}) => {
       return;
     }
 
-    // const options = [option1.trim(), option2.trim(), option3.trim(), option4.trim()];
+    const options = [option1.trim(), option2.trim(), option3.trim(), option4.trim()];
 
-    // if (!options.includes(correctAnswer.trim())) {
-    //   alert("La bonne réponse doit être l'une des réponses écrites.")
-    //   return;
-    // }
+    // Vérifier que toutes les options sont uniques
+    const uniqueOptions = new Set(options);
+    if (uniqueOptions.size < 4) {
+      alert('Il ne peut pas avoir plusieurs fois la même réponse');
+      return;
+    }
 
     const newQuiz = {
       question: question.trim(),
