@@ -9,11 +9,42 @@ const SignUpForm = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errorMessage, setErrorMessage] = useState('')
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validateUsername = (username) => {
+    const re = /^[a-zA-Z0-9_]{3,10}$/; // Alphanumeric and underscores, 3-10 characters
+    return re.test(username);
+  };
+
+  const validatePassword = (password) => {
+    const re =/^[A-Za-z\d]{5,}$/; // Minimum 5 caractères, seulement des lettres et/ou des chiffres
+    return re.test(password);
+  };
+
+
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (password !== passwordConfirmation) {
       setErrorMessage("Les mots de passe sont différents !");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Email invalide");
+      return;
+    }
+
+    if (!validateUsername(username)) {
+      setErrorMessage("Pseudo invalide. Utilisez uniquement des lettres, des chiffres et des underscores (3-10 caractères)");
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setErrorMessage("Le mot de passe doit contenir au moins 5 caractères et n'utiliser que des lettres et/ou des chiffres");
       return;
     }
 
@@ -29,6 +60,7 @@ const SignUpForm = () => {
       setUsername('');
       setPassword('');
       setPasswordConfirmation('');
+      setErrorMessage('')
     } catch (error) {
       console.error('Erreur:', error);
       if (error.response && error.response.data && error.response.data.message) {
@@ -56,7 +88,7 @@ const SignUpForm = () => {
         <input
           type='text'
           className="form-input"
-          placeholder='Choisissez un pseudo'
+          placeholder='Entrez votre pseudo'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />

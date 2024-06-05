@@ -9,26 +9,47 @@ const QuizForm = ({ onQuizSubmit}) => {
   const [option3, setOption3] = useState('');
   const [option4, setOption4] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+
+  const validateInput = (input) => {
+    const re = /^[A-Za-z\d\s?]+$/; // Only letters, numbers, spaces, and question mark
+    return re.test(input);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!question.trim().endsWith('?')) {
-      alert('La question doit se terminer par un ?')
+      setErrorMessage('La question doit se terminer par un ?');
       return;
     }
 
     if (!question.trim() || !option1.trim() || !option2.trim() || !option3.trim() || !option4.trim()) {
-      alert('Champs non remplis');
+      setErrorMessage('Champs non remplis');
+      return;
+    }
+
+    if (!validateInput(question)) {
+      setErrorMessage('La question contient des caractères non autorisés');
       return;
     }
 
     const options = [option1.trim(), option2.trim(), option3.trim(), option4.trim()];
 
     // Vérifier que toutes les options sont uniques
-    const uniqueOptions = new Set(options);
+    const uniqueOptions = new Set();
+
+    for (let option of options) {
+      if (!validateInput(option)) {
+        setErrorMessage('Les options contiennent des caractères non autorisés');
+        return;
+      }
+      uniqueOptions.add(option);
+    }
+
     if (uniqueOptions.size < 4) {
-      alert('Il ne peut pas avoir plusieurs fois la même réponse');
+      setErrorMessage('Il ne peut pas avoir plusieurs fois la même réponse');
       return;
     }
 
@@ -47,12 +68,14 @@ const QuizForm = ({ onQuizSubmit}) => {
         setOption3('');
         setOption4('');
         setCorrectAnswer('');
+        setErrorMessage('');
       })
-      .catch(error => alert("Erreur lors de l'ajout du quiz. Essayez à nouveau"));
+      .catch(error => setErrorMessage("Erreur lors de l'ajout du quiz. Essayez à nouveau"));
     };
     return (
       <div className="quiz-form-container">
         <h2 className="quiz-form-title">Propose ta question</h2>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <label className="quiz-form-label">
             Question :
