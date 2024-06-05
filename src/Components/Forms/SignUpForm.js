@@ -7,12 +7,14 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (password !== passwordConfirmation) {
-      return alert("Les mots de passes sont différents !")
+      setErrorMessage("Les mots de passe sont différents !");
+      return;
     }
 
     try {
@@ -29,13 +31,18 @@ const SignUpForm = () => {
       setPasswordConfirmation('');
     } catch (error) {
       console.error('Erreur:', error);
-      alert("Une erreur est survenue")
+      if (error.response && error.response.data && error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage("Une erreur est survenue");
+      }
     }
   };
 
   return (
     <div className='form-container'>
       <h3 className='form-title'>Créer un compte</h3>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSignUp}>
       <label htmlFor="email" className='form-label'>Email :</label>
         <input
