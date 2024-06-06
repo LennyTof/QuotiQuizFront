@@ -3,6 +3,8 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoginProvider } from './Components/Users/LoginContext';
 import Banner from "./Components/Banner";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 const HomePage = lazy(() => import("./Components/HomePage"));
 const QuizComponent = lazy(() => import("./Components/Quizs/QuizComponent"));
@@ -18,6 +20,7 @@ const NewQuizList = lazy(() => import("./Components/Quizs/NewQuizList"));
 const PasswordForgot = lazy(() => import("./Components/Forms/PasswordForgot"));
 const PasswordReset = lazy(() => import("./Components/Forms/PasswordReset"));
 
+
 function App() {
 
   return (
@@ -25,7 +28,7 @@ function App() {
       <LoginProvider>
       <Banner />
       <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FontAwesomeIcon icon={faSpinner} spin />}>
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/component" element={<QuizComponent/>} />
