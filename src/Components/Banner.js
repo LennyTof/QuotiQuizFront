@@ -3,6 +3,9 @@ import LogoutButton from './Buttons/LogoutButton';
 import { Link } from 'react-router-dom';
 import { useLogin } from './Users/LoginContext';
 import useIsAdmin from './Users/IsAdmin';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import '../style/banner.css';
 
 const Banner = () => {
@@ -42,7 +45,7 @@ const Banner = () => {
         {isLoggedIn && <h3>Bonjour {localStorage.username} !</h3>}
       </div>
       <div className='space-between'>
-        <button className='btn btn-success' onClick={toggleSidebar}>{isSidebarOpen ? 'Fermer Menu' : 'Ouvrir Menu'}</button>
+        <button className='btn btn-success' onClick={toggleSidebar}>{isSidebarOpen ? <FontAwesomeIcon icon={faMinus} /> : <FontAwesomeIcon icon={faList} />}</button>
         <div>
           {isLoggedIn && <Link to="/profil" className='btn btn-success m-1'>Profil</Link>}
           {isLoggedIn ? <LogoutButton className="btn btn-success m-1" onLogout={() => updateLoginStatus(false)}/> :  <Link to="/login" className='btn btn-success mb-1'>Créer un compte/ Se connecter</Link>}
