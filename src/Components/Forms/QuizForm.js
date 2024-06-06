@@ -14,7 +14,7 @@ const QuizForm = ({ onQuizSubmit}) => {
 
 
   const validateInput = (input) => {
-    const re = /^[A-Za-z\d\s?]+$/; // Only letters, numbers, spaces, and question mark
+    const re = /^[A-Za-z\d\s,?'’-]+$/; // Only letters, numbers, spaces, and question mark
     return re.test(input);
   };
 
