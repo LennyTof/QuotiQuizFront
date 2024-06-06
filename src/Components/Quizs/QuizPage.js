@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ import '../../style/quiz.css';
 const QuizPage = () => {
   const [quiz, setQuiz] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [isCorrect, setIsCorrect] = useState(null);
   const [askedQuestions, setAskedQuestions] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(0);

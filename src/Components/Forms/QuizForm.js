@@ -8,6 +8,7 @@ const QuizForm = ({ onQuizSubmit}) => {
   const [option2, setOption2] = useState('');
   const [option3, setOption3] = useState('');
   const [option4, setOption4] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 

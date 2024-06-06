@@ -49,7 +49,7 @@ const SignUpForm = () => {
     }
 
     try {
-      const response = await axios.post('/user/signup', {
+      await axios.post('/user/signup', {
         email,
         username,
         password,

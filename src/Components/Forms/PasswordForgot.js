@@ -10,7 +10,7 @@ const PasswordForgot = () => {
   const handleSubmit= async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/user/reset-password-email', { email });
+      await axios.post('/user/reset-password-email', { email });
       setMessage("Email correctement envoyé, vérifie tes spams si il n'apparait pas.");
       navigate('/password-forgot-reset');
     } catch (error) {
@@ -27,6 +27,7 @@ const PasswordForgot = () => {
         <input
           type='email'
           value={email}
+          // eslint-disable-next-line no-sequences
           onChange={(e) => (setEmail(e.target.value), setMessage(""))}
         />
         <button type='submit'>Envoyer un email</button>

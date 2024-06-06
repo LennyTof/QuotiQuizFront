@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoginProvider } from './Components/Users/LoginContext';
 import Banner from "./Components/Banner";

@@ -11,7 +11,7 @@ const InfoForm = ({ emailState, usernameState, onClose, userId}) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`/user/update/${userId}`, {
+      await axios.put(`/user/update/${userId}`, {
         email,
         username,
         oldPassword,
