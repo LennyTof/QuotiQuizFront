@@ -12,14 +12,7 @@ const Leaderboard = () => {
 
   const userUsername = localStorage.getItem('username');
 
-  const todayDate = () => {
-    return new Date()
-  }
-
-  // affiche les dates au format français
-  const formatDate = (dateString) => {
-    return moment(dateString).tz('Europe/Paris').format('DD/MM');
-  };
+  const todayDate = moment().tz('Europe/Paris').format('DD/MM');
 
   useEffect(() => {
 
@@ -49,7 +42,7 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard">
-      <h2>Les scores du jour {formatDate(todayDate())}</h2>
+      <h2>Les scores du jour {todayDate}</h2>
       {scores.length === 0 ?
         <h3>Il n'y a pas eu de participant pour l'instant</h3>
         : <div className="score-and-details">
