@@ -1,6 +1,7 @@
-import React from "react";
+import {useState} from "react";
 import { useLocation } from "react-router-dom";
 import { useLogin } from '../Users/LoginContext';
+import { Link } from "react-router-dom";
 import '../../style/result.css';
 
 const QuizResult = () => {
@@ -8,6 +9,8 @@ const QuizResult = () => {
   // récupére le score
   const location = useLocation();
   const { isLoggedIn } = useLogin();
+
+  const [message, setMessage] = useState('')
 
   let numberOfCorrectAnswer = location.state.totalScore ?? 0;
 
@@ -24,7 +27,7 @@ const QuizResult = () => {
 
     navigator.clipboard.writeText(shareText)
       .then(() => {
-        alert('Le lien avec ton score a été copié dans le presse-papiers!');
+        setMessage('copié');
       })
       .catch(err => {
         console.error('Failed to copy: ', err);
@@ -36,7 +39,8 @@ const QuizResult = () => {
       <h1 className="mt-3">Quiz terminé !</h1>
       { isLoggedIn && <h4>Tu peux accéder à l'historique de tes quiz dans ton profil et voir les résultats des autres joueurs via le menu !</h4> }
       <div className="result-display">
-        <button onClick={handleShareScore} className="btn btn-success mt-3">Partage ton score</button>
+          <Link to="/quiz-form" className='btn btn-success m-1 mt-3'>Propose ta propose ta propre question</Link>
+          <button onClick={handleShareScore} className="btn btn-success mt-3">Partage ton score</button><span style={{color: 'red'}}>{message}</span>
         <h3>
           Tu as obtenu {numberOfCorrectAnswer} {questionPlural} sur 5 !
         </h3>
