@@ -42,7 +42,7 @@ const LoginForm = () => {
         password,
       });
 
-      const expirationTime = new Date().getTime() + 24 * 60 * 60 * 1000;
+      const expirationTime = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
       localStorage.setItem('expirationTime', expirationTime);
