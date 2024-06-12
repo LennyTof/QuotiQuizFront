@@ -84,6 +84,10 @@ const QuizPage = () => {
 
   const handleAnswerClick = () => {
 
+    if (selectedAnswer == null) {
+      return
+    }
+
     // vérifie si la réponse est correcte
     const isAnswerCorrect = selectedAnswer === quiz.correctAnswer;
     setIsCorrect(isAnswerCorrect);
@@ -92,7 +96,7 @@ const QuizPage = () => {
       setRightAnswer(prev => prev +1);
       setAnnoucement('Bonne réponse !')
     } else {
-      setAnnoucement('Mauvaise réponse :(')
+      setAnnoucement(`Mauvaise réponse :( Le bon choix était "${quiz.correctAnswer}"`)
     };
 
     setQuizDetails(prevDetails => [...prevDetails, {
@@ -102,7 +106,7 @@ const QuizPage = () => {
     }]);
 
     setAnswerQuestions([...answeredQuestions, isAnswerCorrect ? 'correct' : 'false']);
-
+    setSelectedAnswer(null)
     // au bout de 5 questions répondues, termine le quiz est redirige sur la page de score
     if (askedQuestions.length !== 5 ) {
       fetchRandomQuiz();
@@ -165,6 +169,7 @@ const QuizPage = () => {
         <div>
           <button onClick={handleAnswerClick} className="validation-button">Valider</button>
         </div>
+        <br/>
         <h2>{announcement}</h2>
         <div className="rectangles container h-25 ">
           {askedQuestions.map((question, index) => (

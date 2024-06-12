@@ -2,7 +2,8 @@
   margin-top: 20px;
   font-family: 'Arial', sans-serif;
   background: #cfcfcf;
-  border-radius: 8px;
+  border: solid black 1.5px;
+  border-radius: 20px;
   padding: 20px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
   margin: auto;
@@ -39,7 +40,7 @@
 
 .validation-button {
   color: #fff;
-  background-color: #21aba2;
+  background-color: #2A9D8F;
   border: none;
   padding: 10px 20px;
   font-size: 16px;

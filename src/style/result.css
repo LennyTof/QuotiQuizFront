@@ -23,6 +23,8 @@
 .result-answer {
   border-radius: 10px;
   padding: 5px;
+  font-size: large;
+  font-style: oblique;
 }
 
 .correct {
