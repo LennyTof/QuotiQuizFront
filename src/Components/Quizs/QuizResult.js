@@ -14,8 +14,6 @@ const QuizResult = () => {
 
   let numberOfCorrectAnswer = location.state.totalScore ?? 0;
 
-  console.log(location.state)
-
   const questionPlural = numberOfCorrectAnswer >= 2 ? "bonnes réponses" : "bonne réponse"
 
   const handleShareScore = () => {
