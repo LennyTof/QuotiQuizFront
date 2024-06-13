@@ -39,7 +39,7 @@ const QuizResult = () => {
       <h1 className="mt-3">Quiz terminé !</h1>
       { isLoggedIn && <h4>Tu peux accéder à l'historique de tes quiz dans ton profil et voir les résultats des autres joueurs via le menu !</h4> }
       <div className="result-display">
-          <Link to="/quiz-form" className='btn btn-success m-1 mt-3'>Propose ta propose ta propre question</Link>
+          <Link to="/quiz-form" className='btn btn-success m-1 mt-3'>Propose ta propre question</Link>
           <button onClick={handleShareScore} className="btn btn-success mt-3">Partage ton score</button><span style={{color: 'red'}}>{message}</span>
         <h3>
           Tu as obtenu {numberOfCorrectAnswer} {questionPlural} sur 5 !

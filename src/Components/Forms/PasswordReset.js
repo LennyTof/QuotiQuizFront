@@ -21,6 +21,9 @@ const PasswordReset = () => {
         newPassword: password
       });
       setMessage("Ton mot de passe a bien été réinitialisé.")
+      setOtp('')
+      setPassword('')
+      setConfirmPassword('')
     } catch (error) {
       setMessage("Le token est invalide ou a expiré.")
     }
